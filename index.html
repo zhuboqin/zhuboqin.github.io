@@ -48,9 +48,9 @@
       </nav>
       <nav id="sub-nav">
         
-          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS"></a>
         
-        <a id="nav-search-btn" class="nav-icon" title="Suche"></a>
+        <a id="nav-search-btn" class="nav-icon" title="Buscar"></a>
       </nav>
       <div id="search-form-wrap">
         <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://zhuboqin.github.io"></form>
@@ -83,11 +83,33 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        
+        <h3 id="生成、部署文件快捷方式："><a href="#生成、部署文件快捷方式：" class="headerlink" title="生成、部署文件快捷方式："></a>生成、部署文件快捷方式：</h3><pre><code>$ hexo d -g
+相当于执行下面两句话：
+$ hexo generate
+$ hexo deploy
+</code></pre><h3 id="更多hexo命令："><a href="#更多hexo命令：" class="headerlink" title="更多hexo命令："></a>更多hexo命令：</h3><pre><code>npm install hexo -g #安装
+npm update hexo -g #升级  
+hexo init #初始化
+</code></pre><p>######1. 简写######<br>    hexo n “我的博客” == hexo new “我的博客” #新建文章<br>    hexo p == hexo publish<br>    hexo g == hexo generate#生成<br>    hexo s == hexo server #启动服务预览<br>    hexo d == hexo deploy#部署</p>
+<p>######2. 服务器######<br>    hexo server #Hexo 会监视文件变动并自动更新，您无须重启服务器。<br>    hexo server -s #静态模式<br>    hexo server -p 5000 #更改端口<br>    hexo server -i 192.168.1.1 #自定义 IP</p>
+<pre><code>hexo clean #清除缓存 网页正常情况下可以忽略此条命令
+hexo g #生成静态网页
+hexo d #开始部署
+</code></pre><p>######3. 监视文件变动######<br>    hexo generate #使用 Hexo 生成静态文件快速而且简单<br>    hexo generate –watch #监视文件变动</p>
+<p>######4. 完成后部署######<br>    两个命令的作用是相同的<br>    hexo generate –deploy<br>    hexo deploy –generate</p>
+<pre><code>hexo deploy -g
+hexo server -g
+</code></pre><p>######5. 草稿######<br>    hexo publish [layout] <title></title></p>
+<p>######6. 模版######<br>    hexo new “postName” #新建文章<br>    hexo new page “pageName” #新建页面<br>    hexo generate #生成静态页面至public目录<br>    hexo server #开启预览访问端口（默认端口4000，’ctrl + c’关闭server）<br>    hexo deploy #将.deploy目录部署到GitHub</p>
+<pre><code>hexo new [layout] &lt;title&gt;
+hexo new photo &quot;My Gallery&quot;
+hexo new &quot;Hello World&quot; --lang tw
+</code></pre><p><a href="参考" title="https://segmentfault.com/a/1190000002632530">参考文章</a></p>
+
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://zhuboqin.github.io/2018/03/23/hello-world-mine/" data-id="cjf420dpi00008ggd1ejw53do" class="article-share-link">Teilen</a>
+      <a data-url="http://zhuboqin.github.io/2018/03/23/hello-world-mine/" data-id="cjf420dpi00008ggd1ejw53do" class="article-share-link">Compartir</a>
       
       
     </footer>
@@ -132,7 +154,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://zhuboqin.github.io/2018/03/23/hello-world/" data-id="cjf420dpw00018ggdp39b414q" class="article-share-link">Teilen</a>
+      <a data-url="http://zhuboqin.github.io/2018/03/23/hello-world/" data-id="cjf420dpw00018ggdp39b414q" class="article-share-link">Compartir</a>
       
       
     </footer>
@@ -158,7 +180,7 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Archiv</h3>
+    <h3 class="widget-title">Archivos</h3>
     <div class="widget">
       <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a></li></ul>
     </div>
@@ -168,7 +190,7 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">letzter Beitrag</h3>
+    <h3 class="widget-title">Posts recientes</h3>
     <div class="widget">
       <ul>
         
@@ -193,7 +215,7 @@
   <div class="outer">
     <div id="footer-info" class="inner">
       &copy; 2018 Zhubq<br>
-      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+      Construido por <a href="http://hexo.io/" target="_blank">Hexo</a>
     </div>
   </div>
 </footer>
