@@ -1,34 +1,196 @@
-extends partial/layout
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="description" content="">
+  <meta name="keywords" content="">
+  
+    <link rel="icon" href="">
+  
+    
+  <title>My Hello World | Zhubq的博客</title>
+  <link rel="stylesheet" href="/style.css">
+  <link rel="stylesheet" href="/lib/jquery.fancybox.min.css">
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
 
-include mixins
+<body>
+  <header>
+  <div class="header-container">
+    <a class='logo' href="/">
+      <span>Zhubq的博客</span>
+    </a>
+    <ul class="right-header">
+      
+        <li class="nav-item">
+          
+            <a href="/" class="item-link">首页</a>
+          
+        </li>
+      
+        <li class="nav-item">
+          
+            <a href="/about" class="item-link">关于</a>
+          
+        </li>
+      
+        <li class="nav-item">
+          
+            <a href="/archives" class="item-link">归档</a>
+          
+        </li>
+      
+        <li class="nav-item">
+          
+            <a href="/tags" class="item-link">标签</a>
+          
+        </li>
+      
+    </ul>
+  </div>
+</header>
 
-block site_title
-    != page.title + " · " + config.title
+  <main id='post'>
+  <div class="content">
+    <article>
+        <section class="content markdown-body">
+          <h1>My Hello World</h1>
+          <div class='post-meta'>
+            <i class="fa fa-calendar" aria-hidden="true"></i> <time>2018年03月23日</time>
+            
+            
+          </div>
+          <h3 id="生成、部署文件快捷方式："><a href="#生成、部署文件快捷方式：" class="headerlink" title="生成、部署文件快捷方式："></a>生成、部署文件快捷方式：</h3><pre><code>$ hexo d -g
+相当于执行下面两句话：
+$ hexo generate
+$ hexo deploy
+</code></pre><h3 id="更多hexo命令："><a href="#更多hexo命令：" class="headerlink" title="更多hexo命令："></a>更多hexo命令：</h3><pre><code>npm install hexo -g #安装
+npm update hexo -g #升级  
+hexo init #初始化
+</code></pre><h6 id="1-简写"><a href="#1-简写" class="headerlink" title="1. 简写"></a>1. 简写</h6><pre><code>hexo n &quot;我的博客&quot; == hexo new &quot;我的博客&quot; #新建文章
+hexo p == hexo publish
+hexo g == hexo generate#生成
+hexo s == hexo server #启动服务预览
+hexo d == hexo deploy#部署
+</code></pre><h6 id="2-服务器"><a href="#2-服务器" class="headerlink" title="2. 服务器"></a>2. 服务器</h6><pre><code>hexo server #Hexo 会监视文件变动并自动更新，您无须重启服务器。
+hexo server -s #静态模式
+hexo server -p 5000 #更改端口
+hexo server -i 192.168.1.1 #自定义 IP
+hexo clean #清除缓存 网页正常情况下可以忽略此条命令
+hexo g #生成静态网页
+hexo d #开始部署
+</code></pre><h6 id="3-监视文件变动"><a href="#3-监视文件变动" class="headerlink" title="3. 监视文件变动"></a>3. 监视文件变动</h6><pre><code>hexo generate #使用 Hexo 生成静态文件快速而且简单
+hexo generate --watch #监视文件变动
+</code></pre><h6 id="4-完成后部署"><a href="#4-完成后部署" class="headerlink" title="4. 完成后部署"></a>4. 完成后部署</h6><pre><code>两个命令的作用是相同的
+hexo generate --deploy
+hexo deploy --generate
 
-block description
-    - var desc = page.desc || strip_html(page.content).replace(/^\s*/, '').replace(/\s*$/, '').substring(0, 150);
-    meta(name="description", content=desc)
+hexo deploy -g
+hexo server -g
+</code></pre><h6 id="5-草稿"><a href="#5-草稿" class="headerlink" title="5. 草稿"></a>5. 草稿</h6><pre><code>hexo publish [layout] &lt;title&gt;
+</code></pre><h6 id="6-模版"><a href="#6-模版" class="headerlink" title="6. 模版"></a>6. 模版</h6><pre><code>hexo new &quot;postName&quot; #新建文章
+hexo new page &quot;pageName&quot; #新建页面
+hexo generate #生成静态页面至public目录
+hexo server #开启预览访问端口（默认端口4000，&apos;ctrl + c&apos;关闭server）
+hexo deploy #将.deploy目录部署到GitHub
 
-block content
-  .autopagerize_page_element: .content: .post-page
-    include mixins
-    +make_post(page, true)
-    .share
-      .evernote
-        a.fa.fa-bookmark(href="javascript:(function(){EN_CLIP_HOST='http://www.evernote.com';try{var%20x=document.createElement('SCRIPT');x.type='text/javascript';x.src=EN_CLIP_HOST+'/public/bookmarkClipper.js?'+(new%20Date().getTime()/100000);document.getElementsByTagName('head')[0].appendChild(x);}catch(e){location.href=EN_CLIP_HOST+'/clip.action?url='+encodeURIComponent(location.href)+'&title='+encodeURIComponent(document.title);}})();", ref="nofollow", target="_blank")
-      .weibo
-        a.fa.fa-weibo(href="javascript:void((function(s,d,e){try{}catch(e){}var f='http://service.weibo.com/share/share.php?',u=d.location.href,p=['url=',e(u),'&title=',e(d.title),'&appkey=2924220432'].join('');function a(){if(!window.open([f,p].join(''),'mb',['toolbar=0,status=0,resizable=1,width=620,height=450,left=',(s.width-620)/2,',top=',(s.height-450)/2].join('')))u.href=[f,p].join('');};if(/Firefox/.test(navigator.userAgent)){setTimeout(a,0)}else{a()}})(screen,document,encodeURIComponent));")
-      .twitter
-        a.fa.fa-twitter(href=url_for("http://twitter.com/home?status="+","+config.url+"/"+page.path+","+config.title+","+page.title+",;"))
-    - var prev = page.prev ? page.prev.path : false;
-    - var next = page.next ? page.next.path : false;
-    .pagination
-      ul.clearfix
-        if prev
-          li.pre.pagbuttons
-            a.btn(role="navigation",href=url_for(prev), title=page.prev.title)!= __('prev_post')
-        if next
-          li.next.pagbuttons
-            a.btn(role="navigation",href=url_for(next), title=page.next.title)!= __('next_post')
-    if page.comments
-        include partial/comments
+hexo new [layout] &lt;title&gt;
+hexo new photo &quot;My Gallery&quot;
+hexo new &quot;Hello World&quot; --lang tw
+</code></pre><p><a href="https://segmentfault.com/a/1190000002632530" target="_blank" rel="noopener">参考文章</a></p>
+
+        </section>
+    </article>
+    
+        
+  </div>
+  <aside>
+    
+    <div class="toc-container">
+        <h1>目录</h1>
+        <div class="content">
+            <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#生成、部署文件快捷方式："><span class="toc-number">1.</span> <span class="toc-text">生成、部署文件快捷方式：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#更多hexo命令："><span class="toc-number">2.</span> <span class="toc-text">更多hexo命令：</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#1-简写"><span class="toc-number">2.0.0.1.</span> <span class="toc-text">1. 简写</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#2-服务器"><span class="toc-number">2.0.0.2.</span> <span class="toc-text">2. 服务器</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#3-监视文件变动"><span class="toc-number">2.0.0.3.</span> <span class="toc-text">3. 监视文件变动</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#4-完成后部署"><span class="toc-number">2.0.0.4.</span> <span class="toc-text">4. 完成后部署</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#5-草稿"><span class="toc-number">2.0.0.5.</span> <span class="toc-text">5. 草稿</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#6-模版"><span class="toc-number">2.0.0.6.</span> <span class="toc-text">6. 模版</span></a></li></ol></li></ol></li></ol></li></ol>
+        </div>
+    </div>
+    
+  </aside>
+</main>
+
+
+
+  <footer>
+  <div class="copyright">
+    <div>
+      &copy; 2018 | Powered by <a href="https://hexo.io" target="_blank">Hexo</a>&nbsp
+    </div>
+    <div>
+      Theme by <a href="https://github.com/lewis-geek/hexo-theme-Aath" target="_blank">Aath</a>
+    </div>
+  </div>
+</footer>
+
+
+<script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+<script src="/lib/in-view.min.js"></script>
+<script src="/lib/lodash.min.js"></script>
+<script>
+  var isDown = true
+  var oldY = 0
+  inView.offset(50)
+
+  document.body.addEventListener('touchstart', function(){});
+  
+  window.addEventListener('scroll', _.throttle(e => {
+    var currentY = window.scrollY
+    if((oldY - currentY) < 0) {
+      isDown = true
+    } else {
+      isDown = false
+    }
+    oldY = currentY
+  }, 250))
+
+  $("article img").each(function() {
+      var strA = "<a data-fancybox='gallery' href='" + this.src + "'></a>";
+      $(this).wrapAll(strA);
+  });
+
+  $('.toc-link').each(function() {
+      var href = $(this).attr("href");
+      
+      inView(href).on('exit', () => {
+        if (isDown) {
+          handleActive(href)
+        }
+      })
+
+      inView(href).on('enter', () => {
+        if (!isDown) {
+          handleActive(href)
+        }
+      })
+
+      this.onclick = function(e) {
+        var pos = $(href).offset().top - 10;
+        $("html,body").animate({scrollTop: pos}, 300);
+        setTimeout(() => {
+          handleActive(href)
+        }, 350)
+        return false
+      }
+  })
+
+  function handleActive(href) {
+    document.querySelectorAll('.toc-link').forEach(elm => {
+      elm.classList.remove('active')
+    })
+    document.querySelector(".toc [href='"+ href +"']").classList.add('active')
+  }
+</script>
+<script src="/lib/jquery.fancybox.min.js"></script>
+
+
+</body>
+</html>
