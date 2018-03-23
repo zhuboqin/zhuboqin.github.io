@@ -90,12 +90,13 @@ $ hexo deploy
 </code></pre><h3 id="更多hexo命令："><a href="#更多hexo命令：" class="headerlink" title="更多hexo命令："></a>更多hexo命令：</h3><pre><code>npm install hexo -g #安装
 npm update hexo -g #升级  
 hexo init #初始化
-</code></pre><p>######1. 简写######<br>    hexo n “我的博客” == hexo new “我的博客” #新建文章<br>    hexo p == hexo publish<br>    hexo g == hexo generate#生成<br>    hexo s == hexo server #启动服务预览<br>    hexo d == hexo deploy#部署</p>
-<p>######2. 服务器######<br>    hexo server #Hexo 会监视文件变动并自动更新，您无须重启服务器。<br>    hexo server -s #静态模式<br>    hexo server -p 5000 #更改端口<br>    hexo server -i 192.168.1.1 #自定义 IP</p>
-<pre><code>hexo clean #清除缓存 网页正常情况下可以忽略此条命令
-hexo g #生成静态网页
-hexo d #开始部署
-</code></pre><p>######3. 监视文件变动######<br>    hexo generate #使用 Hexo 生成静态文件快速而且简单<br>    hexo generate –watch #监视文件变动</p>
+</code></pre><h6 id="1-简写"><a href="#1-简写" class="headerlink" title="1. 简写"></a>1. 简写</h6><pre><code>hexo n &quot;我的博客&quot; == hexo new &quot;我的博客&quot; #新建文章
+hexo p == hexo publish
+hexo g == hexo generate#生成
+hexo s == hexo server #启动服务预览
+hexo d == hexo deploy#部署
+</code></pre><p>######2. 服务器######<br>    hexo server #Hexo 会监视文件变动并自动更新，您无须重启服务器。<br>    hexo server -s #静态模式<br>    hexo server -p 5000 #更改端口<br>    hexo server -i 192.168.1.1 #自定义 IP<br>    hexo clean #清除缓存 网页正常情况下可以忽略此条命令<br>    hexo g #生成静态网页<br>    hexo d #开始部署</p>
+<p>######3. 监视文件变动######<br>    hexo generate #使用 Hexo 生成静态文件快速而且简单<br>    hexo generate –watch #监视文件变动</p>
 <p>######4. 完成后部署######<br>    两个命令的作用是相同的<br>    hexo generate –deploy<br>    hexo deploy –generate</p>
 <pre><code>hexo deploy -g
 hexo server -g
