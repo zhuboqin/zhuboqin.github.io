@@ -79,16 +79,16 @@
 
 
 
-<meta name="description" content="生成、部署文件快捷方式：$ hexo d -g 相当于执行下面两句话： $ hexo generate $ hexo deploy 更多hexo命令：npm install hexo -g #安装 npm update hexo -g #升级   hexo init #初始化 1. 简写hexo n &amp;quot;我的博客&amp;quot; == hexo new &amp;quot;我的博客&amp;quot; #新建">
+<meta name="description" content="平时看了无数篇关于handler，looper，message详解的博客，最终面对面试官的提问，第一反应居然一脸懵逼，不知从哪儿说起，心里还纳闷：不可能啊！！！！！ 可能好记性真的不如烂笔头， 于是愤然建起了个人博客，励志每天多少写一个知识点，首先还是先来回忆下埋在我记忆深处的handler。。。。权当个人笔记使用，以后还会不断的纪录，修改，探索。 #">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hello Blog">
-<meta property="og:url" content="http://zhuboqin.github.io/2018/03/23/hello-world-mine/index.html">
+<meta property="og:title" content="Android消息机制-Handler">
+<meta property="og:url" content="http://zhuboqin.github.io/2018/03/24/Android消息机制-Handler/index.html">
 <meta property="og:site_name" content="Zhubq的博客">
-<meta property="og:description" content="生成、部署文件快捷方式：$ hexo d -g 相当于执行下面两句话： $ hexo generate $ hexo deploy 更多hexo命令：npm install hexo -g #安装 npm update hexo -g #升级   hexo init #初始化 1. 简写hexo n &amp;quot;我的博客&amp;quot; == hexo new &amp;quot;我的博客&amp;quot; #新建">
-<meta property="og:updated_time" content="2018-03-24T07:15:26.480Z">
+<meta property="og:description" content="平时看了无数篇关于handler，looper，message详解的博客，最终面对面试官的提问，第一反应居然一脸懵逼，不知从哪儿说起，心里还纳闷：不可能啊！！！！！ 可能好记性真的不如烂笔头， 于是愤然建起了个人博客，励志每天多少写一个知识点，首先还是先来回忆下埋在我记忆深处的handler。。。。权当个人笔记使用，以后还会不断的纪录，修改，探索。 #">
+<meta property="og:updated_time" content="2018-03-24T07:31:58.754Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hello Blog">
-<meta name="twitter:description" content="生成、部署文件快捷方式：$ hexo d -g 相当于执行下面两句话： $ hexo generate $ hexo deploy 更多hexo命令：npm install hexo -g #安装 npm update hexo -g #升级   hexo init #初始化 1. 简写hexo n &amp;quot;我的博客&amp;quot; == hexo new &amp;quot;我的博客&amp;quot; #新建">
+<meta name="twitter:title" content="Android消息机制-Handler">
+<meta name="twitter:description" content="平时看了无数篇关于handler，looper，message详解的博客，最终面对面试官的提问，第一反应居然一脸懵逼，不知从哪儿说起，心里还纳闷：不可能啊！！！！！ 可能好记性真的不如烂笔头， 于是愤然建起了个人博客，励志每天多少写一个知识点，首先还是先来回忆下埋在我记忆深处的handler。。。。权当个人笔记使用，以后还会不断的纪录，修改，探索。 #">
 
 
 
@@ -118,13 +118,13 @@
 
 
 
-  <link rel="canonical" href="http://zhuboqin.github.io/2018/03/23/hello-world-mine/"/>
+  <link rel="canonical" href="http://zhuboqin.github.io/2018/03/24/Android消息机制-Handler/"/>
 
 
 
 
 
-  <title>Hello Blog | Zhubq的博客</title>
+  <title>Android消息机制-Handler | Zhubq的博客</title>
   
 
 
@@ -231,7 +231,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://zhuboqin.github.io/2018/03/23/hello-world-mine/">
+    <link itemprop="mainEntityOfPage" href="http://zhuboqin.github.io/2018/03/24/Android消息机制-Handler/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Zhubq">
@@ -248,7 +248,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Hello Blog</h1>
+          <h1 class="post-title" itemprop="name headline">Android消息机制-Handler</h1>
         
 
         <div class="post-meta">
@@ -260,8 +260,8 @@
               
                 <span class="post-meta-item-text">Posté le</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-03-23T22:28:37+08:00">
-                2018-03-23
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-03-24T15:15:47+08:00">
+                2018-03-24
               </time>
             
 
@@ -298,45 +298,8 @@
       
 
       
-        <h3 id="生成、部署文件快捷方式："><a href="#生成、部署文件快捷方式：" class="headerlink" title="生成、部署文件快捷方式："></a>生成、部署文件快捷方式：</h3><pre><code>$ hexo d -g
-相当于执行下面两句话：
-$ hexo generate
-$ hexo deploy
-</code></pre><h3 id="更多hexo命令："><a href="#更多hexo命令：" class="headerlink" title="更多hexo命令："></a>更多hexo命令：</h3><pre><code>npm install hexo -g #安装
-npm update hexo -g #升级  
-hexo init #初始化
-</code></pre><h6 id="1-简写"><a href="#1-简写" class="headerlink" title="1. 简写"></a>1. 简写</h6><pre><code>hexo n &quot;我的博客&quot; == hexo new &quot;我的博客&quot; #新建文章
-hexo p == hexo publish
-hexo g == hexo generate#生成
-hexo s == hexo server #启动服务预览
-hexo d == hexo deploy#部署
-</code></pre><h6 id="2-服务器"><a href="#2-服务器" class="headerlink" title="2. 服务器"></a>2. 服务器</h6><pre><code>hexo server #Hexo 会监视文件变动并自动更新，您无须重启服务器。
-hexo server -s #静态模式
-hexo server -p 5000 #更改端口
-hexo server -i 192.168.1.1 #自定义 IP
-hexo clean #清除缓存 网页正常情况下可以忽略此条命令
-hexo g #生成静态网页
-hexo d #开始部署
-</code></pre><h6 id="3-监视文件变动"><a href="#3-监视文件变动" class="headerlink" title="3. 监视文件变动"></a>3. 监视文件变动</h6><pre><code>hexo generate #使用 Hexo 生成静态文件快速而且简单
-hexo generate --watch #监视文件变动
-</code></pre><h6 id="4-完成后部署"><a href="#4-完成后部署" class="headerlink" title="4. 完成后部署"></a>4. 完成后部署</h6><pre><code>两个命令的作用是相同的
-hexo generate --deploy
-hexo deploy --generate
-
-hexo deploy -g
-hexo server -g
-</code></pre><h6 id="5-草稿"><a href="#5-草稿" class="headerlink" title="5. 草稿"></a>5. 草稿</h6><pre><code>hexo publish [layout] &lt;title&gt;
-</code></pre><h6 id="6-模版"><a href="#6-模版" class="headerlink" title="6. 模版"></a>6. 模版</h6><pre><code>hexo new &quot;postName&quot; #新建文章
-hexo new page &quot;pageName&quot; #新建页面
-hexo generate #生成静态页面至public目录
-hexo server #开启预览访问端口（默认端口4000，&apos;ctrl + c&apos;关闭server）
-hexo deploy #将.deploy目录部署到GitHub
-
-hexo new [layout] &lt;title&gt;
-hexo new photo &quot;My Gallery&quot;
-hexo new &quot;Hello World&quot; --lang tw
-</code></pre><p><a href="https://segmentfault.com/a/1190000002632530" target="_blank" rel="noopener">参考文章</a></p>
-
+        <p>平时看了无数篇关于handler，looper，message详解的博客，最终面对面试官的提问，第一反应居然一脸懵逼，不知从哪儿说起，心里还纳闷：不可能啊！！！！！ 可能好记性真的不如烂笔头， 于是愤然建起了个人博客，励志每天多少写一个知识点，首先还是先来回忆下埋在我记忆深处的handler。。。。<br>权当个人笔记使用，以后还会不断的纪录，修改，探索。</p>
+<h2 id=""><a href="#" class="headerlink" title="#"></a>#</h2>
       
     </div>
     
@@ -360,8 +323,8 @@ hexo new &quot;Hello World&quot; --lang tw
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/03/23/hello-world/" rel="next" title="Hello World">
-                <i class="fa fa-chevron-left"></i> Hello World
+              <a href="/2018/03/23/hello-world-mine/" rel="next" title="Hello Blog">
+                <i class="fa fa-chevron-left"></i> Hello Blog
               </a>
             
           </div>
@@ -369,10 +332,6 @@ hexo new &quot;Hello World&quot; --lang tw
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/03/24/Android消息机制-Handler/" rel="prev" title="Android消息机制-Handler">
-                Android消息机制-Handler <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -486,7 +445,7 @@ hexo new &quot;Hello World&quot; --lang tw
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#生成、部署文件快捷方式："><span class="nav-number">1.</span> <span class="nav-text">生成、部署文件快捷方式：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#更多hexo命令："><span class="nav-number">2.</span> <span class="nav-text">更多hexo命令：</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#1-简写"><span class="nav-number">2.0.0.1.</span> <span class="nav-text">1. 简写</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#2-服务器"><span class="nav-number">2.0.0.2.</span> <span class="nav-text">2. 服务器</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#3-监视文件变动"><span class="nav-number">2.0.0.3.</span> <span class="nav-text">3. 监视文件变动</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#4-完成后部署"><span class="nav-number">2.0.0.4.</span> <span class="nav-text">4. 完成后部署</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#5-草稿"><span class="nav-number">2.0.0.5.</span> <span class="nav-text">5. 草稿</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#6-模版"><span class="nav-number">2.0.0.6.</span> <span class="nav-text">6. 模版</span></a></li></ol></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#"><span class="nav-number">1.</span> <span class="nav-text">#</span></a></li></ol></div>
             
 
           </div>
