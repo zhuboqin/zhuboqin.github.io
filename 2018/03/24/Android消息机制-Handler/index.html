@@ -81,13 +81,13 @@
 
 <meta name="description" content="平时看了无数篇关于Handler，Looper，MessageQueue详解的博客，最终面对面试官的提问，第一反应居然一脸懵逼，不知从哪儿说起，心里还纳闷：不可能啊！！！！！ 可能好记性真的不如烂笔头， 于是愤然建起了个人博客，励志每天多少学一个知识点，一周写两篇博客。首先还是先来回忆下埋在我记忆深处的handler。。。。权当个人笔记使用，以后还会不断的纪录，修改，探索。 Handler使用场景">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Android消息机制-Handler">
+<meta property="og:title" content="Android消息机制（上层实现）-Handler">
 <meta property="og:url" content="http://zhuboqin.github.io/2018/03/24/Android消息机制-Handler/index.html">
 <meta property="og:site_name" content="Zhubq的博客">
 <meta property="og:description" content="平时看了无数篇关于Handler，Looper，MessageQueue详解的博客，最终面对面试官的提问，第一反应居然一脸懵逼，不知从哪儿说起，心里还纳闷：不可能啊！！！！！ 可能好记性真的不如烂笔头， 于是愤然建起了个人博客，励志每天多少学一个知识点，一周写两篇博客。首先还是先来回忆下埋在我记忆深处的handler。。。。权当个人笔记使用，以后还会不断的纪录，修改，探索。 Handler使用场景">
-<meta property="og:updated_time" content="2018-03-25T07:03:08.965Z">
+<meta property="og:updated_time" content="2018-03-25T08:29:17.671Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Android消息机制-Handler">
+<meta name="twitter:title" content="Android消息机制（上层实现）-Handler">
 <meta name="twitter:description" content="平时看了无数篇关于Handler，Looper，MessageQueue详解的博客，最终面对面试官的提问，第一反应居然一脸懵逼，不知从哪儿说起，心里还纳闷：不可能啊！！！！！ 可能好记性真的不如烂笔头， 于是愤然建起了个人博客，励志每天多少学一个知识点，一周写两篇博客。首先还是先来回忆下埋在我记忆深处的handler。。。。权当个人笔记使用，以后还会不断的纪录，修改，探索。 Handler使用场景">
 
 
@@ -124,7 +124,7 @@
 
 
 
-  <title>Android消息机制-Handler | Zhubq的博客</title>
+  <title>Android消息机制（上层实现）-Handler | Zhubq的博客</title>
   
 
 
@@ -184,7 +184,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
-            Home
+            Startseite
           </a>
         </li>
       
@@ -194,7 +194,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
-            Archives
+            Archiv
           </a>
         </li>
       
@@ -248,7 +248,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Android消息机制-Handler</h1>
+          <h1 class="post-title" itemprop="name headline">Android消息机制（上层实现）-Handler</h1>
         
 
         <div class="post-meta">
@@ -258,7 +258,7 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Posted on</span>
+                <span class="post-meta-item-text">Veröffentlicht am</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-03-24T15:15:47+08:00">
                 2018-03-24
@@ -299,16 +299,26 @@
 
       
         <p>平时看了无数篇关于Handler，Looper，MessageQueue详解的博客，最终面对面试官的提问，第一反应居然一脸懵逼，不知从哪儿说起，心里还纳闷：不可能啊！！！！！ 可能好记性真的不如烂笔头， 于是愤然建起了个人博客，励志每天多少学一个知识点，一周写两篇博客。首先还是先来回忆下埋在我记忆深处的handler。。。。<br>权当个人笔记使用，以后还会不断的纪录，修改，探索。</p>
-<h2 id="Handler使用场景"><a href="#Handler使用场景" class="headerlink" title="Handler使用场景"></a>Handler使用场景</h2><p>将一个任务切换到Handler所在的线程去执行:<br>通常用作子线程更新UI、HandlerThread、IntentService</p>
+<h2 id="Handler使用场景"><a href="#Handler使用场景" class="headerlink" title="Handler使用场景"></a>Handler使用场景</h2><p>将一个任务切换到Handler所在的线程去执行:<br>通常用作子线程更新UI、<a href="http://baidu.com" target="_blank" rel="noopener">HandlerThread</a>、<a href="http://baidu.com" target="_blank" rel="noopener">IntentService</a></p>
 <h6 id="延伸：-子线程为什么不能更新UI？"><a href="#延伸：-子线程为什么不能更新UI？" class="headerlink" title="延伸： 子线程为什么不能更新UI？"></a>延伸： 子线程为什么不能更新UI？</h6><p>Android的UI不是线程安全的，如果在多线程中并发访问可能会导致UI控件处于不可预期的状态，如果对UI控件的访问加上锁机制的话，有两个缺点：首先加上锁机制会让UI访问的逻辑变得复杂；其次锁机制会降低UI访问的效率，因为锁机制会阻塞某些线程的执行。基于这两个缺点，最简单且高效的方法就是采用单线程模型来处理UI操作，对于开发者来说也不是很麻烦，只是需要通过Handler切换一下UI访问的执行线程即可。</p>
 <h2 id="Handler使用流程"><a href="#Handler使用流程" class="headerlink" title="Handler使用流程"></a>Handler使用流程</h2><p>假设mainThread和workThread两个线程，现在要从workThread切换到mainThread中执行某个操作。</p>
 <ol>
-<li>确定任务需要在哪个线程中执行，则在这个线程中初始化Looper。<br>要做的是,在mainThread中创建Looper：<br> <code>Looper.prepare()</code></li>
+<li>确定任务需要在哪个线程中执行，则在这个线程中初始化Looper（线程和Looper的对应关系由<a href="http://baidu.com" target="_blank" rel="noopener">ThreadLocal</a>维护）。<br>要做的是,在mainThread中创建Looper：<br> <code>Looper.prepare()</code></li>
 <li>在mainThread创建Handler。要做的是：<br> <code>Handler handler = new Handler()</code></li>
 <li>启动消息循环：<br> <code>Looper.loop()</code></li>
+<li>在workThread线程中获取mainThread的Handler，并且发送消息：<br> <code>handler.sendMessage...// 最终调用会调用sendMessageAtTime(msg,time)</code>或<br> <code>handler.post...// post..最终调用也会调用sendMessageAtTime(msg,time)</code><br>sendMessageAtTime..方法最终调用enqueueMessage(..)方法，其内部会指定msg.target = this,this就是指当前的handler，处理消息时用得到！！</li>
+<li>轮询MessageQueue<em>这一步不需要我们写代码，是为了流程的完整性，将其列出</em>：<br> <code>loop()方法中执行:Message msg = queue.next(),
+ 接着：msg.target.dispatchMessage(msg) //将消息发送给对应的Handler(msg.target就对应的Handler)</code></li>
+<li>这时，就可以在mainThread中执行workThread发送过来的消息了，handler处理消息的方式有三种：<br> <code>handler.post(...) //第一优先级：执行post所传递的Runnable参数.run()</code><br> <code>new Handler(callback) //第二优先级：执行构造方法传来的callback匿名内部类的handleMessage(msg)</code><br> <code>handlerMessage(msg)//第三优先级：调用Handler的handlerMessage()方法</code><h6 id="补充："><a href="#补充：" class="headerlink" title="补充："></a>补充：</h6>Android中的UI线程是不需要创建Looper的，因为<a href="http://baidu.com" target="_blank" rel="noopener">ActivityThread</a>被创建的时候就会初始化Looper。</li>
 </ol>
-<h6 id="Android中的UI线程是不需要创建Looper的，因为ActivityThread被创建的时候就会初始化Looper。"><a href="#Android中的UI线程是不需要创建Looper的，因为ActivityThread被创建的时候就会初始化Looper。" class="headerlink" title="Android中的UI线程是不需要创建Looper的，因为ActivityThread被创建的时候就会初始化Looper。"></a>Android中的UI线程是不需要创建Looper的，因为ActivityThread被创建的时候就会初始化Looper。</h6><p><strong>ActivityThread？？？？？？？？？？？？？？？？？？？</strong></p>
-<h2 id="Handler工作流程及原理"><a href="#Handler工作流程及原理" class="headerlink" title="Handler工作流程及原理"></a>Handler工作流程及原理</h2><h2 id="Handler知识点"><a href="#Handler知识点" class="headerlink" title="Handler知识点"></a>Handler知识点</h2><p>1. </p>
+<h1 id="tu"><a href="#tu" class="headerlink" title="tu"></a>tu</h1><h2 id="Handler工作流程及原理"><a href="#Handler工作流程及原理" class="headerlink" title="Handler工作流程及原理"></a>Handler工作流程及原理</h2><p>Handler的部分工作原理流程在上一节已经有所提到，而这部分主要从源代码的角度分析下Handler的原理及工作流程。</p>
+<h2 id="Handler知识点"><a href="#Handler知识点" class="headerlink" title="Handler知识点"></a>Handler知识点</h2><ol>
+<li>Handler与线程的关系</li>
+<li>Handler与Looper的关系</li>
+<li>Looper与线程的关系</li>
+<li>Looper与MessageQueue的关系</li>
+<li>MessageQueue与线程的关系</li>
+</ol>
 
       
     </div>
@@ -395,10 +405,10 @@
       
         <ul class="sidebar-nav motion-element">
           <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            Table of Contents
+            Inhaltsverzeichnis
           </li>
           <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            Overview
+            Übersicht
           </li>
         </ul>
       
@@ -419,7 +429,7 @@
                 <a href="/archives/">
               
                   <span class="site-state-item-count">3</span>
-                  <span class="site-state-item-name">posts</span>
+                  <span class="site-state-item-name">Artikel</span>
                 </a>
               </div>
             
@@ -455,7 +465,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Handler使用场景"><span class="nav-number">1.</span> <span class="nav-text">Handler使用场景</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#延伸：-子线程为什么不能更新UI？"><span class="nav-number">1.0.0.0.1.</span> <span class="nav-text">延伸： 子线程为什么不能更新UI？</span></a></li></ol></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Handler使用流程"><span class="nav-number">2.</span> <span class="nav-text">Handler使用流程</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#Android中的UI线程是不需要创建Looper的，因为ActivityThread被创建的时候就会初始化Looper。"><span class="nav-number">2.0.0.0.1.</span> <span class="nav-text">Android中的UI线程是不需要创建Looper的，因为ActivityThread被创建的时候就会初始化Looper。</span></a></li></ol></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Handler工作流程及原理"><span class="nav-number">3.</span> <span class="nav-text">Handler工作流程及原理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Handler知识点"><span class="nav-number">4.</span> <span class="nav-text">Handler知识点</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Handler使用场景"><span class="nav-number">1.</span> <span class="nav-text">Handler使用场景</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#延伸：-子线程为什么不能更新UI？"><span class="nav-number">1.0.0.0.1.</span> <span class="nav-text">延伸： 子线程为什么不能更新UI？</span></a></li></ol></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Handler使用流程"><span class="nav-number">2.</span> <span class="nav-text">Handler使用流程</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#补充："><span class="nav-number">2.0.0.0.1.</span> <span class="nav-text">补充：</span></a></li></ol></li></ol></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#tu"><span class="nav-number"></span> <span class="nav-text">tu</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Handler工作流程及原理"><span class="nav-number">1.</span> <span class="nav-text">Handler工作流程及原理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Handler知识点"><span class="nav-number">2.</span> <span class="nav-text">Handler知识点</span></a></li></ol></div>
             
 
           </div>
@@ -485,7 +495,7 @@
 </div>
 
 
-  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+  <div class="powered-by">Erstellt mit  <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
 
 
 
