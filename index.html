@@ -181,7 +181,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
-            Startseite
+            Home
           </a>
         </li>
       
@@ -191,7 +191,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
-            Archiv
+            Archives
           </a>
         </li>
       
@@ -257,7 +257,7 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">Posted on</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-03-24T15:15:47+08:00">
                 2018-03-24
@@ -304,12 +304,26 @@
 <h6 id="延伸：-子线程为什么不能更新UI？"><a href="#延伸：-子线程为什么不能更新UI？" class="headerlink" title="延伸： 子线程为什么不能更新UI？"></a>延伸： 子线程为什么不能更新UI？</h6><p>Android的UI不是线程安全的，如果在多线程中并发访问可能会导致UI控件处于不可预期的状态，如果对UI控件的访问加上锁机制的话，有两个缺点：首先加上锁机制会让UI访问的逻辑变得复杂；其次锁机制会降低UI访问的效率，因为锁机制会阻塞某些线程的执行。基于这两个缺点，最简单且高效的方法就是采用单线程模型来处理UI操作，对于开发者来说也不是很麻烦，只是需要通过Handler切换一下UI访问的执行线程即可。</p>
 <h2 id="Handler使用流程"><a href="#Handler使用流程" class="headerlink" title="Handler使用流程"></a>Handler使用流程</h2><p>假设mainThread和workThread两个线程，现在要从workThread切换到mainThread中执行某个操作。</p>
 <ol>
-<li>确定任务需要在哪个线程中执行，则在这个线程中初始化Looper（线程和Looper的对应关系由<a href="http://baidu.com" target="_blank" rel="noopener">ThreadLocal</a>维护）。<br>要做的是,在mainThread中创建Looper：<br> <code>Looper.prepare()</code></li>
-<li>在mainThread创建Handler。要做的是：<br> <code>Handler handler = new Handler()</code></li>
-<li>启动消息循环：<br> <code>Looper.loop()</code></li>
-<li>在workThread线程中获取mainThread的Handler，并且发送消息：<br> <code>handler.sendMessage...// 最终调用会调用sendMessageAtTime(msg,time)</code>或<br> <code>handler.post...// post..最终调用也会调用sendMessageAtTime(msg,time)</code><br>sendMessageAtTime..方法最终调用enqueueMessage(..)方法，其内部会指定msg.target = this,this就是指当前的handler，处理消息时用得到！！</li>
-<li>轮询MessageQueue<em>（这一步不需要我们写代码，是为了流程的完整性，将其列出）</em>：<br> <code>loop()方法中执行:Message msg = queue.next(),</code><br> 接着：<code>msg.target.dispatchMessage(msg) //将消息发送给对应的Handler(msg.target就对应的Handler)</code></li>
-<li>这时，就可以在mainThread中执行workThread发送过来的消息了，handler处理消息的方式有三种：<figure class="highlight plain"><figcaption><span>//第一优先级：执行post所传递的Runnable参数.run()</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">new Handler(callback) //第二优先级：执行构造方法传来的callback匿名内部类handleMessage(msg)</span><br><span class="line">handlerMessage(msg)//第三优先级：调用Handler的handlerMessage()方法</span><br></pre></td></tr></table></figure>
+<li><p>确定任务需要在哪个线程中执行，则在这个线程中初始化Looper（线程和Looper的对应关系由<a href="http://baidu.com" target="_blank" rel="noopener">ThreadLocal</a>维护）。<br>要做的是,在mainThread中创建Looper：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Looper.prepare()</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>在mainThread创建Handler。要做的是：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Handler handler = new Handler()</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>启动消息循环：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Looper.loop()</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>在workThread线程中获取mainThread的Handler，并且发送消息：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">handler.sendMessage...// 最终调用会调用sendMessageAtTime(msg,time)</span><br><span class="line">或</span><br><span class="line">handler.post...// post..最终调用也会调用sendMessageAtTime(msg,time)</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>sendMessageAtTime..方法最终调用enqueueMessage(..)方法，其内部会指定msg.target = this,this就是指当前的handler，处理消息时用得到！！</p>
+<ol>
+<li><p>轮询MessageQueue<em>（这一步不需要我们写代码，是为了流程的完整性，将其列出）</em>：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">loop()方法中执行:Message msg = queue.next(),</span><br><span class="line">接着：msg.target.dispatchMessage(msg) //将消息发送给对应的Handler(msg.target就对应的Handler)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>这时，就可以在mainThread中执行workThread发送过来的消息了，handler处理消息的方式有三种：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">handler.post(...) //第一优先级：执行post所传递的Runnable参数.run()</span><br><span class="line">new Handler(callback) //第二优先级：执行构造方法传来的callback匿名内部类handleMessage(msg)</span><br><span class="line">handlerMessage(msg)//第三优先级：调用Handler的handlerMessage()方法</span><br></pre></td></tr></table></figure>
 </li>
 </ol>
 <p>以上，只有第4步是写在workThread中的，其余代码都是在mainThread里的。</p>
@@ -399,7 +413,7 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">Posted on</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-03-23T22:28:37+08:00">
                 2018-03-23
@@ -556,7 +570,7 @@ hexo new &quot;Hello World&quot; --lang tw
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">Posted on</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-03-23T22:09:15+08:00">
                 2018-03-23
@@ -689,7 +703,7 @@ hexo new &quot;Hello World&quot; --lang tw
                 <a href="/archives/">
               
                   <span class="site-state-item-count">3</span>
-                  <span class="site-state-item-name">Artikel</span>
+                  <span class="site-state-item-name">posts</span>
                 </a>
               </div>
             
@@ -739,7 +753,7 @@ hexo new &quot;Hello World&quot; --lang tw
 </div>
 
 
-  <div class="powered-by">Erstellt mit  <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
 
 
 
