@@ -85,7 +85,7 @@
 <meta property="og:url" content="http://zhuboqin.github.io/2018/03/24/Android消息机制-Handler/index.html">
 <meta property="og:site_name" content="Zhubq的博客">
 <meta property="og:description" content="平时看了无数篇关于Handler，Looper，MessageQueue详解的博客，最终面对面试官的提问，第一反应居然一脸懵逼，不知从哪儿说起，心里还纳闷：不可能啊！！！！！ 可能好记性真的不如烂笔头， 于是愤然建起了个人博客，励志每天多少学一个知识点，一周写两篇博客。首先还是先来回忆下埋在我记忆深处的handler。。。。权当个人笔记使用，以后还会不断的纪录，修改，探索。 Handler使用场景">
-<meta property="og:updated_time" content="2018-03-25T08:52:44.533Z">
+<meta property="og:updated_time" content="2018-03-25T08:59:44.097Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Android消息机制（上层实现）-Handler">
 <meta name="twitter:description" content="平时看了无数篇关于Handler，Looper，MessageQueue详解的博客，最终面对面试官的提问，第一反应居然一脸懵逼，不知从哪儿说起，心里还纳闷：不可能啊！！！！！ 可能好记性真的不如烂笔头， 于是愤然建起了个人博客，励志每天多少学一个知识点，一周写两篇博客。首先还是先来回忆下埋在我记忆深处的handler。。。。权当个人笔记使用，以后还会不断的纪录，修改，探索。 Handler使用场景">
@@ -184,7 +184,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
-            Home
+            Startseite
           </a>
         </li>
       
@@ -194,7 +194,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
-            Archives
+            Archiv
           </a>
         </li>
       
@@ -258,7 +258,7 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Posted on</span>
+                <span class="post-meta-item-text">Veröffentlicht am</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-03-24T15:15:47+08:00">
                 2018-03-24
@@ -313,11 +313,8 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Looper.loop()</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>在workThread线程中获取mainThread的Handler，并且发送消息：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">handler.sendMessage...// 最终调用会调用sendMessageAtTime(msg,time)</span><br><span class="line">或</span><br><span class="line">handler.post...// post..最终调用也会调用sendMessageAtTime(msg,time)</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">handler.sendMessage...// 最终调用会调用sendMessageAtTime(msg,time)</span><br><span class="line">或</span><br><span class="line">handler.post...// post..最终调用也会调用sendMessageAtTime(msg,time)</span><br><span class="line">//sendMessageAtTime..方法最终调用enqueueMessage(..)方法，其内部会指定msg.target = this,this就是指当前的handler，处理消息时用得到！！</span><br></pre></td></tr></table></figure>
 </li>
-</ol>
-<p>sendMessageAtTime..方法最终调用enqueueMessage(..)方法，其内部会指定msg.target = this,this就是指当前的handler，处理消息时用得到！！</p>
-<ol>
 <li><p>轮询MessageQueue<em>（这一步不需要我们写代码，是为了流程的完整性，将其列出）</em>：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">loop()方法中执行:Message msg = queue.next(),</span><br><span class="line">接着：msg.target.dispatchMessage(msg) //将消息发送给对应的Handler(msg.target就对应的Handler)</span><br></pre></td></tr></table></figure>
 </li>
@@ -421,10 +418,10 @@
       
         <ul class="sidebar-nav motion-element">
           <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            Table of Contents
+            Inhaltsverzeichnis
           </li>
           <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            Overview
+            Übersicht
           </li>
         </ul>
       
@@ -445,7 +442,7 @@
                 <a href="/archives/">
               
                   <span class="site-state-item-count">3</span>
-                  <span class="site-state-item-name">posts</span>
+                  <span class="site-state-item-name">Artikel</span>
                 </a>
               </div>
             
@@ -511,7 +508,7 @@
 </div>
 
 
-  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+  <div class="powered-by">Erstellt mit  <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
 
 
 
