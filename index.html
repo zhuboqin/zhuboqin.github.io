@@ -181,7 +181,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
-            Startseite
+            Home
           </a>
         </li>
       
@@ -191,7 +191,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
-            Archiv
+            Archives
           </a>
         </li>
       
@@ -257,7 +257,7 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">Posted on</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-03-24T15:15:47+08:00">
                 2018-03-24
@@ -299,8 +299,18 @@
       
         
           
-            <p>平时看了无数篇关于handler，looper，message详解的博客，最终面对面试官的提问，第一反应居然一脸懵逼，不知从哪儿说起，心里还纳闷：不可能啊！！！！！ 可能好记性真的不如烂笔头， 于是愤然建起了个人博客，励志每天多少写一个知识点，首先还是先来回忆下埋在我记忆深处的handler。。。。<br>权当个人笔记使用，以后还会不断的纪录，修改，探索。</p>
-<h2 id=""><a href="#" class="headerlink" title="#"></a>#</h2>
+            <p>平时看了无数篇关于Handler，Looper，MessageQueue详解的博客，最终面对面试官的提问，第一反应居然一脸懵逼，不知从哪儿说起，心里还纳闷：不可能啊！！！！！ 可能好记性真的不如烂笔头， 于是愤然建起了个人博客，励志每天多少学一个知识点，一周写两篇博客。首先还是先来回忆下埋在我记忆深处的handler。。。。<br>权当个人笔记使用，以后还会不断的纪录，修改，探索。</p>
+<h2 id="Handler使用场景"><a href="#Handler使用场景" class="headerlink" title="Handler使用场景"></a>Handler使用场景</h2><p>将一个任务切换到Handler所在的线程去执行:<br>通常用作子线程更新UI、HandlerThread、IntentService</p>
+<h6 id="延伸：-子线程为什么不能更新UI？"><a href="#延伸：-子线程为什么不能更新UI？" class="headerlink" title="延伸： 子线程为什么不能更新UI？"></a>延伸： 子线程为什么不能更新UI？</h6><p>Android的UI不是线程安全的，如果在多线程中并发访问可能会导致UI控件处于不可预期的状态，如果对UI控件的访问加上锁机制的话，有两个缺点：首先加上锁机制会让UI访问的逻辑变得复杂；其次锁机制会降低UI访问的效率，因为锁机制会阻塞某些线程的执行。基于这两个缺点，最简单且高效的方法就是采用单线程模型来处理UI操作，对于开发者来说也不是很麻烦，只是需要通过Handler切换一下UI访问的执行线程即可。</p>
+<h2 id="Handler使用流程"><a href="#Handler使用流程" class="headerlink" title="Handler使用流程"></a>Handler使用流程</h2><p>假设mainThread和workThread两个线程，现在要从workThread切换到mainThread中执行某个操作。</p>
+<ol>
+<li>确定任务需要在哪个线程中执行，则在这个线程中初始化Looper。<br>要做的是,在mainThread中创建Looper：<br> <code>Looper.prepare()</code></li>
+<li>在mainThread创建Handler。要做的是：<br> <code>Handler handler = new Handler()</code></li>
+<li>启动消息循环：<br> <code>Looper.loop()</code></li>
+</ol>
+<h6 id="Android中的UI线程是不需要创建Looper的，因为ActivityThread被创建的时候就会初始化Looper。"><a href="#Android中的UI线程是不需要创建Looper的，因为ActivityThread被创建的时候就会初始化Looper。" class="headerlink" title="Android中的UI线程是不需要创建Looper的，因为ActivityThread被创建的时候就会初始化Looper。"></a>Android中的UI线程是不需要创建Looper的，因为ActivityThread被创建的时候就会初始化Looper。</h6><p><strong>ActivityThread？？？？？？？？？？？？？？？？？？？</strong></p>
+<h2 id="Handler工作流程及原理"><a href="#Handler工作流程及原理" class="headerlink" title="Handler工作流程及原理"></a>Handler工作流程及原理</h2><h2 id="Handler知识点"><a href="#Handler知识点" class="headerlink" title="Handler知识点"></a>Handler知识点</h2><p>1. </p>
+
           
         
       
@@ -377,7 +387,7 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">Posted on</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-03-23T22:28:37+08:00">
                 2018-03-23
@@ -534,7 +544,7 @@ hexo new &quot;Hello World&quot; --lang tw
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">Posted on</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-03-23T22:09:15+08:00">
                 2018-03-23
@@ -667,7 +677,7 @@ hexo new &quot;Hello World&quot; --lang tw
                 <a href="/archives/">
               
                   <span class="site-state-item-count">3</span>
-                  <span class="site-state-item-name">Artikel</span>
+                  <span class="site-state-item-name">posts</span>
                 </a>
               </div>
             
@@ -717,7 +727,7 @@ hexo new &quot;Hello World&quot; --lang tw
 </div>
 
 
-  <div class="powered-by">Erstellt mit  <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
 
 
 
