@@ -85,7 +85,7 @@
 <meta property="og:url" content="http://zhuboqin.github.io/2018/03/24/Android消息机制-Handler/index.html">
 <meta property="og:site_name" content="Zhubq的博客">
 <meta property="og:description" content="平时看了无数篇关于Handler，Looper，MessageQueue详解的博客，最终面对面试官的提问，第一反应居然一脸懵逼，不知从哪儿说起，心里还纳闷：不可能啊！！！！！ 可能好记性真的不如烂笔头， 于是愤然建起了个人博客，励志每天多少学一个知识点，一周写两篇博客。首先还是先来回忆下埋在我记忆深处的handler。。。。权当个人笔记使用，以后还会不断的纪录，修改，探索。 Handler使用场景">
-<meta property="og:updated_time" content="2018-03-25T08:59:44.097Z">
+<meta property="og:updated_time" content="2018-03-25T09:02:44.148Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Android消息机制（上层实现）-Handler">
 <meta name="twitter:description" content="平时看了无数篇关于Handler，Looper，MessageQueue详解的博客，最终面对面试官的提问，第一反应居然一脸懵逼，不知从哪儿说起，心里还纳闷：不可能啊！！！！！ 可能好记性真的不如烂笔头， 于是愤然建起了个人博客，励志每天多少学一个知识点，一周写两篇博客。首先还是先来回忆下埋在我记忆深处的handler。。。。权当个人笔记使用，以后还会不断的纪录，修改，探索。 Handler使用场景">
@@ -324,7 +324,7 @@
 </ol>
 <p>以上，只有第4步是写在workThread中的，其余代码都是在mainThread里的。</p>
 <h6 id="handler-post-什么作用？？？"><a href="#handler-post-什么作用？？？" class="headerlink" title="handler.post()什么作用？？？"></a>handler.post()什么作用？？？</h6><h6 id="补充："><a href="#补充：" class="headerlink" title="补充："></a>补充：</h6><p>Android中的UI线程是不需要创建Looper的，因为<a href="http://baidu.com" target="_blank" rel="noopener">ActivityThread</a>被创建的时候就会初始化Looper。</p>
-<h1 id="tu"><a href="#tu" class="headerlink" title="tu"></a>tu</h1><h2 id="Handler工作流程及原理"><a href="#Handler工作流程及原理" class="headerlink" title="Handler工作流程及原理"></a>Handler工作流程及原理</h2><p>Handler的部分工作原理流程在上一节已经有所提到，而这部分主要从源代码的角度分析下Handler的原理及工作流程。</p>
+<h2 id="tu"><a href="#tu" class="headerlink" title="tu"></a>tu</h2><h2 id="Handler工作流程及原理"><a href="#Handler工作流程及原理" class="headerlink" title="Handler工作流程及原理"></a>Handler工作流程及原理</h2><p>Handler的部分工作原理流程在上一节已经有所提到，而这部分主要从源代码的角度分析下Handler的原理及工作流程。</p>
 <h2 id="Handler知识点"><a href="#Handler知识点" class="headerlink" title="Handler知识点"></a>Handler知识点</h2><ol>
 <li>Handler与线程的关系<br> 一个线程可以有多个Handler</li>
 <li>Handler与Looper的关系</li>
@@ -365,6 +365,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/04/01/树/" rel="prev" title="">
+                 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -441,7 +445,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-count">6</span>
                   <span class="site-state-item-name">Artikel</span>
                 </a>
               </div>
@@ -478,7 +482,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Handler使用场景"><span class="nav-number">1.</span> <span class="nav-text">Handler使用场景</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#延伸：-子线程为什么不能更新UI？"><span class="nav-number">1.0.0.0.1.</span> <span class="nav-text">延伸： 子线程为什么不能更新UI？</span></a></li></ol></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Handler使用流程"><span class="nav-number">2.</span> <span class="nav-text">Handler使用流程</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#handler-post-什么作用？？？"><span class="nav-number">2.0.0.0.1.</span> <span class="nav-text">handler.post()什么作用？？？</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#补充："><span class="nav-number">2.0.0.0.2.</span> <span class="nav-text">补充：</span></a></li></ol></li></ol></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#tu"><span class="nav-number"></span> <span class="nav-text">tu</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Handler工作流程及原理"><span class="nav-number">1.</span> <span class="nav-text">Handler工作流程及原理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Handler知识点"><span class="nav-number">2.</span> <span class="nav-text">Handler知识点</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Handler使用场景"><span class="nav-number">1.</span> <span class="nav-text">Handler使用场景</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#延伸：-子线程为什么不能更新UI？"><span class="nav-number">1.0.0.0.1.</span> <span class="nav-text">延伸： 子线程为什么不能更新UI？</span></a></li></ol></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Handler使用流程"><span class="nav-number">2.</span> <span class="nav-text">Handler使用流程</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#handler-post-什么作用？？？"><span class="nav-number">2.0.0.0.1.</span> <span class="nav-text">handler.post()什么作用？？？</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#补充："><span class="nav-number">2.0.0.0.2.</span> <span class="nav-text">补充：</span></a></li></ol></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#tu"><span class="nav-number">3.</span> <span class="nav-text">tu</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Handler工作流程及原理"><span class="nav-number">4.</span> <span class="nav-text">Handler工作流程及原理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Handler知识点"><span class="nav-number">5.</span> <span class="nav-text">Handler知识点</span></a></li></ol></div>
             
 
           </div>
