@@ -181,7 +181,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
-            Home
+            Startseite
           </a>
         </li>
       
@@ -191,7 +191,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
-            Archives
+            Archiv
           </a>
         </li>
       
@@ -214,6 +214,605 @@
           <div id="content" class="content">
             
   <section id="posts" class="posts-expand">
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://zhuboqin.github.io/2019/04/17/java8新增功能/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Zhubq">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Zhubq的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/04/17/java8新增功能/" itemprop="url">Unbenannt</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Veröffentlicht am</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-04-17T19:50:21+08:00">
+                2019-04-17
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="java8新特性"><a href="#java8新特性" class="headerlink" title="java8新特性"></a>java8新特性</h1><h3 id="1-接口可以有静态方法"><a href="#1-接口可以有静态方法" class="headerlink" title="1. 接口可以有静态方法"></a>1. 接口可以有静态方法</h3><p>java8仍要求接口的所有静态成员都必须是公有的。<br>java9中允许接口中有私有的静态方法，但是静态域和静态成员仍然需要是公有的。</p>
+<h3 id="2-新增接口Supplier-lt-gt"><a href="#2-新增接口Supplier-lt-gt" class="headerlink" title="2. 新增接口Supplier&lt;&gt;"></a>2. 新增接口Supplier&lt;&gt;</h3>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://zhuboqin.github.io/2019/04/17/Effective_java_整理/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Zhubq">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Zhubq的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/04/17/Effective_java_整理/" itemprop="url">Unbenannt</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Veröffentlicht am</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-04-17T16:29:11+08:00">
+                2019-04-17
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="Effective-java"><a href="#Effective-java" class="headerlink" title="Effective java"></a>Effective java</h1><h3 id="1-用静态工厂方法代替构造器"><a href="#1-用静态工厂方法代替构造器" class="headerlink" title="1.用静态工厂方法代替构造器"></a>1.用静态工厂方法代替构造器</h3><pre><code>public static Boolean valueOf(){
+    return b? Boolean.TRUE: Boolean.FALSE;
+}
+</code></pre><h3 id="2-遇到多个构造器参数时，要考虑使用构建器"><a href="#2-遇到多个构造器参数时，要考虑使用构建器" class="headerlink" title="2.遇到多个构造器参数时，要考虑使用构建器"></a>2.遇到多个构造器参数时，要考虑使用构建器</h3><pre><code>public class NutritionFacts{
+    private final int servingSize;
+    private final int servings;
+    private final int calories;
+    private final int fat;
+    private final int sodium;
+    private final int carbohydrate;
+
+    public static class Builder{
+        //必须传的参数
+        private *final* int servingSize;
+        private *final* int servings;
+
+        public Builder(int servingSize, int servings){
+            this.servingSize = servingSize;
+            this.servings = servings;
+        }
+        //可传可不传的参数
+        private int calories = 0;
+        private int fat = 0;
+        private int sodium = 0;
+        private int carbohydrate = 0;
+
+        public Builder setCalories(int val){
+            calories = val；
+            return this;
+        }
+        public Builder setFat(int val){fat = val; return this;}
+        public Builder setSodium(int val){sodium = val; return this;}
+        public Builder setCarbohydrate(int val){carbohydrate = val; return     this;}
+
+        public NutritionFacts build(){
+            return new NutritionFacts(this);
+        }
+    }
+
+    private NutritionFacts(Builder builder){
+        servingSize = builder.servingSize;
+        servings = builder.servings;
+        calories = builder.calories;
+        fat = builder.fat;
+        sodium = builder.sodium;
+        carbohydrate = builder.carbohydrate;
+    }
+
+}
+
+//客户端调用
+NutritionFacts nutritionFacts = new NutritionFacts.Builder(240,8).setCalories(100).setSodium(35).setCarbohydrate(27).build();
+</code></pre><h3 id="3-用私有构造器或者枚举类强化singleton属性"><a href="#3-用私有构造器或者枚举类强化singleton属性" class="headerlink" title="3. 用私有构造器或者枚举类强化singleton属性"></a>3. 用私有构造器或者枚举类强化singleton属性</h3><pre><code>//方法一：有风险，可以借助反射机制调用私有构造器，反序列化会创建一个新的实例
+public class Singleton{
+    public static final Singleton instance = new Singleton();
+    private Singleton(){}    
+}
+
+//方法二：有风险，可以借助反射机制调用私有构造器，反序列化会创建一个新的实例；有静态工厂方法的优势
+public class Singleton{
+    private static final Singleton instance = new Singleton();
+    private Singleton(){}
+    public static Singleton getInstance(){
+        return instance;
+    }
+}
+
+//方法三：反序列化可以防止多次实例化
+public enum Singleton{
+    INSTANCE;
+}
+</code></pre><h3 id="4-通过私有构造器-强化不可实例化的能力"><a href="#4-通过私有构造器-强化不可实例化的能力" class="headerlink" title="4. 通过私有构造器 强化不可实例化的能力"></a>4. 通过私有构造器 强化不可实例化的能力</h3><pre><code>//一些只包含静态方法和静态域的工具类，往往不需要被实例化，
+//但对客户端而言，可能无意识地通过编译器自动提供的无参构造器去实例化这样的类。
+//为了防止这一现象，可以提供一个私有的构造器
+public class UtilityClass{
+    private UtilityClass(){
+        throw AssertionError();
+    }
+    ...
+}//副作用：该类不能被子类化，因为子类的构造器必须显式或隐式地调用超类构造器。
+</code></pre><h3 id="5-优先考虑依赖注入来引用资源"><a href="#5-优先考虑依赖注入来引用资源" class="headerlink" title="5. 优先考虑依赖注入来引用资源"></a>5. 优先考虑依赖注入来引用资源</h3><pre><code>public class SpellChecker{
+    private final Lexicon dictionary;
+    public SpellChecker (Lexicon lexicon){ // 将资源或者工厂传给构造器，来创建类
+        this.dictionary = Objects.requireNonNull(dictionary);
+    }
+
+}
+</code></pre><h3 id="6-避免创建不必要的对象（重用不可变的对象，或者已知不会被修改的可变对象）"><a href="#6-避免创建不必要的对象（重用不可变的对象，或者已知不会被修改的可变对象）" class="headerlink" title="6. 避免创建不必要的对象（重用不可变的对象，或者已知不会被修改的可变对象）"></a>6. 避免创建不必要的对象（重用不可变的对象，或者已知不会被修改的可变对象）</h3><pre><code>String s = new String(&apos;abc&apos;); //不建议！！！！
+String s = &apos;abc&apos;; //建议！
+
+
+static boolean isRomanNumeral(String s){
+    return s.matches(&quot;..正则表达式...&quot;);
+} //不建议！！！每调用一次该方法，都会为正则表达式创建一个pattern实例，成本很高
+//改成：
+public class RomanNumerals(){
+    private static fianl Pattern ROMAN = Pattern.compile(&quot;...正则...&quot;);
+    public static boolean isRomanNumeral(String s){
+        return ROMAN.matcher(s).matches();
+    }
+}
+
+//java内部重用对象的案例: 
+//Map接口的keyset方法返回的set对象，实际上对于一个给定的map对象，keyset都返回同样的set实例。
+</code></pre><h3 id="7-消除过期的对象引用"><a href="#7-消除过期的对象引用" class="headerlink" title="7.消除过期的对象引用"></a>7.消除过期的对象引用</h3>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://zhuboqin.github.io/2019/03/19/RStudio中文乱码解决方案/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Zhubq">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Zhubq的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/03/19/RStudio中文乱码解决方案/" itemprop="url">Unbenannt</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Veröffentlicht am</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-03-19T00:35:17+08:00">
+                2019-03-19
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>#RStudio中，出现中文乱码问题的解决方案<br>解决步骤：</p>
+<ol>
+<li>设置RStudio文本显示的默认编码：<br>RStudio菜单栏的Tools -&gt; Global Options</li>
+</ol>
+<ol>
+<li>选择General -&gt; Default Text Encoding，点击Change：</li>
+</ol>
+<ol>
+<li><p>在弹出的编码中，选择UTF-8编码。</p>
+</li>
+<li><p>点击OK，然后再点击OK，保存设置。</p>
+</li>
+</ol>
+<ol>
+<li>最后，在打开文件的时候，选择File -&gt; Reopen with encoding菜单，选择我们使用UTF-8编码打开文件，这样子就可以正确地显示中文了。</li>
+</ol>
+<p><img src="https://images2015.cnblogs.com/blog/1062315/201612/1062315-20161222163637901-460299790.png" alt=""></p>
+<p><img src="https://images2015.cnblogs.com/blog/1062315/201612/1062315-20161222163834229-1190075232.png" alt=""></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://zhuboqin.github.io/2018/12/28/数据结构与算法/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Zhubq">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Zhubq的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/12/28/数据结构与算法/" itemprop="url">Unbenannt</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Veröffentlicht am</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-12-28T21:00:17+08:00">
+                2018-12-28
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="单链表反转"><a href="#单链表反转" class="headerlink" title="单链表反转"></a>单链表反转</h2><h2 id="链表中环的检测"><a href="#链表中环的检测" class="headerlink" title="链表中环的检测"></a>链表中环的检测</h2><h2 id="两个有序的链表合并"><a href="#两个有序的链表合并" class="headerlink" title="两个有序的链表合并"></a>两个有序的链表合并</h2><h2 id="删除链表倒数第n个结点"><a href="#删除链表倒数第n个结点" class="headerlink" title="删除链表倒数第n个结点"></a>删除链表倒数第n个结点</h2><h2 id="求链表的中间结点"><a href="#求链表的中间结点" class="headerlink" title="求链表的中间结点"></a>求链表的中间结点</h2>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
     
       
 
@@ -257,7 +856,7 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Posted on</span>
+                <span class="post-meta-item-text">Veröffentlicht am</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-04-02T22:13:57+08:00">
                 2018-04-02
@@ -377,7 +976,7 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Posted on</span>
+                <span class="post-meta-item-text">Veröffentlicht am</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-04-02T21:57:51+08:00">
                 2018-04-02
@@ -496,7 +1095,7 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Posted on</span>
+                <span class="post-meta-item-text">Veröffentlicht am</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-04-01T19:33:57+08:00">
                 2018-04-01
@@ -619,7 +1218,7 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Posted on</span>
+                <span class="post-meta-item-text">Veröffentlicht am</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-03-24T15:15:47+08:00">
                 2018-03-24
@@ -772,7 +1371,7 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Posted on</span>
+                <span class="post-meta-item-text">Veröffentlicht am</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-03-23T22:28:37+08:00">
                 2018-03-23
@@ -929,7 +1528,7 @@ hexo new &quot;Hello World&quot; --lang tw
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Posted on</span>
+                <span class="post-meta-item-text">Veröffentlicht am</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-03-23T22:09:15+08:00">
                 2018-03-23
@@ -1061,8 +1660,8 @@ hexo new &quot;Hello World&quot; --lang tw
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">6</span>
-                  <span class="site-state-item-name">posts</span>
+                  <span class="site-state-item-count">10</span>
+                  <span class="site-state-item-name">Artikel</span>
                 </a>
               </div>
             
@@ -1102,7 +1701,7 @@ hexo new &quot;Hello World&quot; --lang tw
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
@@ -1112,7 +1711,7 @@ hexo new &quot;Hello World&quot; --lang tw
 </div>
 
 
-  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+  <div class="powered-by">Erstellt mit  <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
 
 
 

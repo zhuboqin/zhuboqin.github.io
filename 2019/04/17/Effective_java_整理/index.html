@@ -79,16 +79,16 @@
 
 
 
-<meta name="description" content="树的定义和属性深度：高度： 树的实现树的遍历先序遍历：中序遍历：后序遍历： 二叉树平均深度： 二叉查找树平均深度：">
+<meta name="description" content="Effective java1.用静态工厂方法代替构造器public static Boolean valueOf(){     return b? Boolean.TRUE: Boolean.FALSE; } 2.遇到多个构造器参数时，要考虑使用构建器public class NutritionFacts{     private final int servingSize;     priva">
 <meta property="og:type" content="article">
-<meta property="og:title" content="树">
-<meta property="og:url" content="http://zhuboqin.github.io/2018/04/01/树/index.html">
+<meta property="og:title" content="Zhubq的博客">
+<meta property="og:url" content="http://zhuboqin.github.io/2019/04/17/Effective_java_整理/index.html">
 <meta property="og:site_name" content="Zhubq的博客">
-<meta property="og:description" content="树的定义和属性深度：高度： 树的实现树的遍历先序遍历：中序遍历：后序遍历： 二叉树平均深度： 二叉查找树平均深度：">
-<meta property="og:updated_time" content="2018-04-02T14:52:34.421Z">
+<meta property="og:description" content="Effective java1.用静态工厂方法代替构造器public static Boolean valueOf(){     return b? Boolean.TRUE: Boolean.FALSE; } 2.遇到多个构造器参数时，要考虑使用构建器public class NutritionFacts{     private final int servingSize;     priva">
+<meta property="og:updated_time" content="2019-04-17T13:34:18.315Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="树">
-<meta name="twitter:description" content="树的定义和属性深度：高度： 树的实现树的遍历先序遍历：中序遍历：后序遍历： 二叉树平均深度： 二叉查找树平均深度：">
+<meta name="twitter:title" content="Zhubq的博客">
+<meta name="twitter:description" content="Effective java1.用静态工厂方法代替构造器public static Boolean valueOf(){     return b? Boolean.TRUE: Boolean.FALSE; } 2.遇到多个构造器参数时，要考虑使用构建器public class NutritionFacts{     private final int servingSize;     priva">
 
 
 
@@ -118,13 +118,13 @@
 
 
 
-  <link rel="canonical" href="http://zhuboqin.github.io/2018/04/01/树/"/>
+  <link rel="canonical" href="http://zhuboqin.github.io/2019/04/17/Effective_java_整理/"/>
 
 
 
 
 
-  <title>树 | Zhubq的博客</title>
+  <title> | Zhubq的博客</title>
   
 
 
@@ -231,7 +231,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://zhuboqin.github.io/2018/04/01/树/">
+    <link itemprop="mainEntityOfPage" href="http://zhuboqin.github.io/2019/04/17/Effective_java_整理/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Zhubq">
@@ -248,7 +248,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">树</h1>
+          <h1 class="post-title" itemprop="name headline"></h1>
         
 
         <div class="post-meta">
@@ -260,8 +260,8 @@
               
                 <span class="post-meta-item-text">Veröffentlicht am</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-04-01T19:33:57+08:00">
-                2018-04-01
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-04-17T16:29:11+08:00">
+                2019-04-17
               </time>
             
 
@@ -298,11 +298,111 @@
       
 
       
-        <h2 id="树的定义和属性"><a href="#树的定义和属性" class="headerlink" title="树的定义和属性"></a>树的定义和属性</h2><p>深度：<br>高度：</p>
-<h2 id="树的实现"><a href="#树的实现" class="headerlink" title="树的实现"></a>树的实现</h2><h2 id="树的遍历"><a href="#树的遍历" class="headerlink" title="树的遍历"></a>树的遍历</h2><p>先序遍历：<br>中序遍历：<br>后序遍历：</p>
-<h2 id="二叉树"><a href="#二叉树" class="headerlink" title="二叉树"></a>二叉树</h2><p>平均深度：</p>
-<h2 id="二叉查找树"><a href="#二叉查找树" class="headerlink" title="二叉查找树"></a>二叉查找树</h2><p>平均深度：</p>
+        <h1 id="Effective-java"><a href="#Effective-java" class="headerlink" title="Effective java"></a>Effective java</h1><h3 id="1-用静态工厂方法代替构造器"><a href="#1-用静态工厂方法代替构造器" class="headerlink" title="1.用静态工厂方法代替构造器"></a>1.用静态工厂方法代替构造器</h3><pre><code>public static Boolean valueOf(){
+    return b? Boolean.TRUE: Boolean.FALSE;
+}
+</code></pre><h3 id="2-遇到多个构造器参数时，要考虑使用构建器"><a href="#2-遇到多个构造器参数时，要考虑使用构建器" class="headerlink" title="2.遇到多个构造器参数时，要考虑使用构建器"></a>2.遇到多个构造器参数时，要考虑使用构建器</h3><pre><code>public class NutritionFacts{
+    private final int servingSize;
+    private final int servings;
+    private final int calories;
+    private final int fat;
+    private final int sodium;
+    private final int carbohydrate;
 
+    public static class Builder{
+        //必须传的参数
+        private *final* int servingSize;
+        private *final* int servings;
+
+        public Builder(int servingSize, int servings){
+            this.servingSize = servingSize;
+            this.servings = servings;
+        }
+        //可传可不传的参数
+        private int calories = 0;
+        private int fat = 0;
+        private int sodium = 0;
+        private int carbohydrate = 0;
+
+        public Builder setCalories(int val){
+            calories = val；
+            return this;
+        }
+        public Builder setFat(int val){fat = val; return this;}
+        public Builder setSodium(int val){sodium = val; return this;}
+        public Builder setCarbohydrate(int val){carbohydrate = val; return     this;}
+
+        public NutritionFacts build(){
+            return new NutritionFacts(this);
+        }
+    }
+
+    private NutritionFacts(Builder builder){
+        servingSize = builder.servingSize;
+        servings = builder.servings;
+        calories = builder.calories;
+        fat = builder.fat;
+        sodium = builder.sodium;
+        carbohydrate = builder.carbohydrate;
+    }
+
+}
+
+//客户端调用
+NutritionFacts nutritionFacts = new NutritionFacts.Builder(240,8).setCalories(100).setSodium(35).setCarbohydrate(27).build();
+</code></pre><h3 id="3-用私有构造器或者枚举类强化singleton属性"><a href="#3-用私有构造器或者枚举类强化singleton属性" class="headerlink" title="3. 用私有构造器或者枚举类强化singleton属性"></a>3. 用私有构造器或者枚举类强化singleton属性</h3><pre><code>//方法一：有风险，可以借助反射机制调用私有构造器，反序列化会创建一个新的实例
+public class Singleton{
+    public static final Singleton instance = new Singleton();
+    private Singleton(){}    
+}
+
+//方法二：有风险，可以借助反射机制调用私有构造器，反序列化会创建一个新的实例；有静态工厂方法的优势
+public class Singleton{
+    private static final Singleton instance = new Singleton();
+    private Singleton(){}
+    public static Singleton getInstance(){
+        return instance;
+    }
+}
+
+//方法三：反序列化可以防止多次实例化
+public enum Singleton{
+    INSTANCE;
+}
+</code></pre><h3 id="4-通过私有构造器-强化不可实例化的能力"><a href="#4-通过私有构造器-强化不可实例化的能力" class="headerlink" title="4. 通过私有构造器 强化不可实例化的能力"></a>4. 通过私有构造器 强化不可实例化的能力</h3><pre><code>//一些只包含静态方法和静态域的工具类，往往不需要被实例化，
+//但对客户端而言，可能无意识地通过编译器自动提供的无参构造器去实例化这样的类。
+//为了防止这一现象，可以提供一个私有的构造器
+public class UtilityClass{
+    private UtilityClass(){
+        throw AssertionError();
+    }
+    ...
+}//副作用：该类不能被子类化，因为子类的构造器必须显式或隐式地调用超类构造器。
+</code></pre><h3 id="5-优先考虑依赖注入来引用资源"><a href="#5-优先考虑依赖注入来引用资源" class="headerlink" title="5. 优先考虑依赖注入来引用资源"></a>5. 优先考虑依赖注入来引用资源</h3><pre><code>public class SpellChecker{
+    private final Lexicon dictionary;
+    public SpellChecker (Lexicon lexicon){ // 将资源或者工厂传给构造器，来创建类
+        this.dictionary = Objects.requireNonNull(dictionary);
+    }
+
+}
+</code></pre><h3 id="6-避免创建不必要的对象（重用不可变的对象，或者已知不会被修改的可变对象）"><a href="#6-避免创建不必要的对象（重用不可变的对象，或者已知不会被修改的可变对象）" class="headerlink" title="6. 避免创建不必要的对象（重用不可变的对象，或者已知不会被修改的可变对象）"></a>6. 避免创建不必要的对象（重用不可变的对象，或者已知不会被修改的可变对象）</h3><pre><code>String s = new String(&apos;abc&apos;); //不建议！！！！
+String s = &apos;abc&apos;; //建议！
+
+
+static boolean isRomanNumeral(String s){
+    return s.matches(&quot;..正则表达式...&quot;);
+} //不建议！！！每调用一次该方法，都会为正则表达式创建一个pattern实例，成本很高
+//改成：
+public class RomanNumerals(){
+    private static fianl Pattern ROMAN = Pattern.compile(&quot;...正则...&quot;);
+    public static boolean isRomanNumeral(String s){
+        return ROMAN.matcher(s).matches();
+    }
+}
+
+//java内部重用对象的案例: 
+//Map接口的keyset方法返回的set对象，实际上对于一个给定的map对象，keyset都返回同样的set实例。
+</code></pre><h3 id="7-消除过期的对象引用"><a href="#7-消除过期的对象引用" class="headerlink" title="7.消除过期的对象引用"></a>7.消除过期的对象引用</h3>
       
     </div>
     
@@ -326,8 +426,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/03/24/Android消息机制-Handler/" rel="next" title="Android消息机制（上层实现）-Handler">
-                <i class="fa fa-chevron-left"></i> Android消息机制（上层实现）-Handler
+              <a href="/2019/03/19/RStudio中文乱码解决方案/" rel="next" title="">
+                <i class="fa fa-chevron-left"></i> 
               </a>
             
           </div>
@@ -336,8 +436,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/04/02/java泛型/" rel="prev" title="java泛型">
-                java泛型 <i class="fa fa-chevron-right"></i>
+              <a href="/2019/04/17/java8新增功能/" rel="prev" title="">
+                 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -452,7 +552,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#树的定义和属性"><span class="nav-number">1.</span> <span class="nav-text">树的定义和属性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#树的实现"><span class="nav-number">2.</span> <span class="nav-text">树的实现</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#树的遍历"><span class="nav-number">3.</span> <span class="nav-text">树的遍历</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二叉树"><span class="nav-number">4.</span> <span class="nav-text">二叉树</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二叉查找树"><span class="nav-number">5.</span> <span class="nav-text">二叉查找树</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Effective-java"><span class="nav-number">1.</span> <span class="nav-text">Effective java</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-用静态工厂方法代替构造器"><span class="nav-number">1.0.1.</span> <span class="nav-text">1.用静态工厂方法代替构造器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-遇到多个构造器参数时，要考虑使用构建器"><span class="nav-number">1.0.2.</span> <span class="nav-text">2.遇到多个构造器参数时，要考虑使用构建器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-用私有构造器或者枚举类强化singleton属性"><span class="nav-number">1.0.3.</span> <span class="nav-text">3. 用私有构造器或者枚举类强化singleton属性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-通过私有构造器-强化不可实例化的能力"><span class="nav-number">1.0.4.</span> <span class="nav-text">4. 通过私有构造器 强化不可实例化的能力</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-优先考虑依赖注入来引用资源"><span class="nav-number">1.0.5.</span> <span class="nav-text">5. 优先考虑依赖注入来引用资源</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-避免创建不必要的对象（重用不可变的对象，或者已知不会被修改的可变对象）"><span class="nav-number">1.0.6.</span> <span class="nav-text">6. 避免创建不必要的对象（重用不可变的对象，或者已知不会被修改的可变对象）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-消除过期的对象引用"><span class="nav-number">1.0.7.</span> <span class="nav-text">7.消除过期的对象引用</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
