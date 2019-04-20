@@ -82,7 +82,7 @@
 <meta name="description" content="Handler使用场景将一个任务切换到Handler所在的线程去执行:通常用作子线程更新UI、HandlerThread、IntentService 子线程为什么不能更新UI？Android的UI不是线程安全的，如果在多线程中并发访问可能会导致UI控件处于不可预期的状态，如果对UI控件的访问加上锁机制的话，有两个缺点：首先加上锁机制会让UI访问的逻辑变得复杂；其次锁机制会降低UI访问的效率，因为锁">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Android消息机制（上层实现）-Handler">
-<meta property="og:url" content="http://zhuboqin.github.io/2018/03/24/Android消息机制-Handler/index.html">
+<meta property="og:url" content="http://zhuboqin.github.io/2018/03/24/3_Android消息机制-Handler/index.html">
 <meta property="og:site_name" content="Zhubq的博客">
 <meta property="og:description" content="Handler使用场景将一个任务切换到Handler所在的线程去执行:通常用作子线程更新UI、HandlerThread、IntentService 子线程为什么不能更新UI？Android的UI不是线程安全的，如果在多线程中并发访问可能会导致UI控件处于不可预期的状态，如果对UI控件的访问加上锁机制的话，有两个缺点：首先加上锁机制会让UI访问的逻辑变得复杂；其次锁机制会降低UI访问的效率，因为锁">
 <meta property="og:updated_time" content="2019-04-20T08:31:59.597Z">
@@ -118,7 +118,7 @@
 
 
 
-  <link rel="canonical" href="http://zhuboqin.github.io/2018/03/24/Android消息机制-Handler/"/>
+  <link rel="canonical" href="http://zhuboqin.github.io/2018/03/24/3_Android消息机制-Handler/"/>
 
 
 
@@ -231,7 +231,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://zhuboqin.github.io/2018/03/24/Android消息机制-Handler/">
+    <link itemprop="mainEntityOfPage" href="http://zhuboqin.github.io/2018/03/24/3_Android消息机制-Handler/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Zhubq">
@@ -355,7 +355,7 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/03/23/hello-world-mine/" rel="next" title="Hello Blog">
+              <a href="/2018/03/23/0_hello-world-mine/" rel="next" title="Hello Blog">
                 <i class="fa fa-chevron-left"></i> Hello Blog
               </a>
             
@@ -365,7 +365,7 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/04/01/树/" rel="prev" title="树">
+              <a href="/2018/04/01/2_树/" rel="prev" title="树">
                 树 <i class="fa fa-chevron-right"></i>
               </a>
             

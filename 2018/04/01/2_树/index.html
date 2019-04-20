@@ -79,16 +79,16 @@
 
 
 
-<meta name="description" content="生成、部署文件快捷方式：进入Hexo目录： $ hexo d -g 相当于执行下面两句话： $ hexo generate $ hexo deploy 更多hexo命令：npm install hexo -g #安装 npm update hexo -g #升级   hexo init #初始化 1. 简写hexo n &amp;quot;我的博客&amp;quot; == hexo new &amp;quot;我的博客">
+<meta name="description" content="树的定义和属性深度：高度： 树的实现树的遍历先序遍历：中序遍历：后序遍历： 二叉树平均深度： 二叉查找树平均深度：">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hello Blog">
-<meta property="og:url" content="http://zhuboqin.github.io/2018/03/23/hello-world-mine/index.html">
+<meta property="og:title" content="树">
+<meta property="og:url" content="http://zhuboqin.github.io/2018/04/01/2_树/index.html">
 <meta property="og:site_name" content="Zhubq的博客">
-<meta property="og:description" content="生成、部署文件快捷方式：进入Hexo目录： $ hexo d -g 相当于执行下面两句话： $ hexo generate $ hexo deploy 更多hexo命令：npm install hexo -g #安装 npm update hexo -g #升级   hexo init #初始化 1. 简写hexo n &amp;quot;我的博客&amp;quot; == hexo new &amp;quot;我的博客">
-<meta property="og:updated_time" content="2019-04-20T08:18:17.631Z">
+<meta property="og:description" content="树的定义和属性深度：高度： 树的实现树的遍历先序遍历：中序遍历：后序遍历： 二叉树平均深度： 二叉查找树平均深度：">
+<meta property="og:updated_time" content="2018-04-02T14:52:34.421Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hello Blog">
-<meta name="twitter:description" content="生成、部署文件快捷方式：进入Hexo目录： $ hexo d -g 相当于执行下面两句话： $ hexo generate $ hexo deploy 更多hexo命令：npm install hexo -g #安装 npm update hexo -g #升级   hexo init #初始化 1. 简写hexo n &amp;quot;我的博客&amp;quot; == hexo new &amp;quot;我的博客">
+<meta name="twitter:title" content="树">
+<meta name="twitter:description" content="树的定义和属性深度：高度： 树的实现树的遍历先序遍历：中序遍历：后序遍历： 二叉树平均深度： 二叉查找树平均深度：">
 
 
 
@@ -118,13 +118,13 @@
 
 
 
-  <link rel="canonical" href="http://zhuboqin.github.io/2018/03/23/hello-world-mine/"/>
+  <link rel="canonical" href="http://zhuboqin.github.io/2018/04/01/2_树/"/>
 
 
 
 
 
-  <title>Hello Blog | Zhubq的博客</title>
+  <title>树 | Zhubq的博客</title>
   
 
 
@@ -231,7 +231,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://zhuboqin.github.io/2018/03/23/hello-world-mine/">
+    <link itemprop="mainEntityOfPage" href="http://zhuboqin.github.io/2018/04/01/2_树/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Zhubq">
@@ -248,7 +248,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Hello Blog</h1>
+          <h1 class="post-title" itemprop="name headline">树</h1>
         
 
         <div class="post-meta">
@@ -260,8 +260,8 @@
               
                 <span class="post-meta-item-text">Veröffentlicht am</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-03-23T22:28:37+08:00">
-                2018-03-23
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-04-01T19:33:57+08:00">
+                2018-04-01
               </time>
             
 
@@ -298,45 +298,10 @@
       
 
       
-        <h3 id="生成、部署文件快捷方式："><a href="#生成、部署文件快捷方式：" class="headerlink" title="生成、部署文件快捷方式："></a>生成、部署文件快捷方式：</h3><pre><code>进入Hexo目录：
-$ hexo d -g
-相当于执行下面两句话：
-$ hexo generate
-$ hexo deploy
-</code></pre><h3 id="更多hexo命令："><a href="#更多hexo命令：" class="headerlink" title="更多hexo命令："></a>更多hexo命令：</h3><pre><code>npm install hexo -g #安装
-npm update hexo -g #升级  
-hexo init #初始化
-</code></pre><h6 id="1-简写"><a href="#1-简写" class="headerlink" title="1. 简写"></a>1. 简写</h6><pre><code>hexo n &quot;我的博客&quot; == hexo new &quot;我的博客&quot; #新建文章
-hexo p == hexo publish
-hexo g == hexo generate#生成
-hexo s == hexo server #启动服务预览
-hexo d == hexo deploy#部署
-</code></pre><h6 id="2-服务器"><a href="#2-服务器" class="headerlink" title="2. 服务器"></a>2. 服务器</h6><pre><code>hexo server #Hexo 会监视文件变动并自动更新，您无须重启服务器。
-hexo server -s #静态模式
-hexo server -p 5000 #更改端口
-hexo server -i 192.168.1.1 #自定义 IP
-hexo clean #清除缓存 网页正常情况下可以忽略此条命令
-hexo g #生成静态网页
-hexo d #开始部署
-</code></pre><h6 id="3-监视文件变动"><a href="#3-监视文件变动" class="headerlink" title="3. 监视文件变动"></a>3. 监视文件变动</h6><pre><code>hexo generate #使用 Hexo 生成静态文件快速而且简单
-hexo generate --watch #监视文件变动
-</code></pre><h6 id="4-完成后部署"><a href="#4-完成后部署" class="headerlink" title="4. 完成后部署"></a>4. 完成后部署</h6><pre><code>两个命令的作用是相同的
-hexo generate --deploy
-hexo deploy --generate
-
-hexo deploy -g
-hexo server -g
-</code></pre><h6 id="5-草稿"><a href="#5-草稿" class="headerlink" title="5. 草稿"></a>5. 草稿</h6><pre><code>hexo publish [layout] &lt;title&gt;
-</code></pre><h6 id="6-模版"><a href="#6-模版" class="headerlink" title="6. 模版"></a>6. 模版</h6><pre><code>hexo new &quot;postName&quot; #新建文章
-hexo new page &quot;pageName&quot; #新建页面
-hexo generate #生成静态页面至public目录
-hexo server #开启预览访问端口（默认端口4000，&apos;ctrl + c&apos;关闭server）
-hexo deploy #将.deploy目录部署到GitHub
-
-hexo new [layout] &lt;title&gt;
-hexo new photo &quot;My Gallery&quot;
-hexo new &quot;Hello World&quot; --lang tw
-</code></pre><p><a href="https://segmentfault.com/a/1190000002632530" target="_blank" rel="noopener">参考文章</a><br><a href="https://blog.csdn.net/lvonve/article/details/79393511" target="_blank" rel="noopener">public key报错</a></p>
+        <h2 id="树的定义和属性"><a href="#树的定义和属性" class="headerlink" title="树的定义和属性"></a>树的定义和属性</h2><p>深度：<br>高度：</p>
+<h2 id="树的实现"><a href="#树的实现" class="headerlink" title="树的实现"></a>树的实现</h2><h2 id="树的遍历"><a href="#树的遍历" class="headerlink" title="树的遍历"></a>树的遍历</h2><p>先序遍历：<br>中序遍历：<br>后序遍历：</p>
+<h2 id="二叉树"><a href="#二叉树" class="headerlink" title="二叉树"></a>二叉树</h2><p>平均深度：</p>
+<h2 id="二叉查找树"><a href="#二叉查找树" class="headerlink" title="二叉查找树"></a>二叉查找树</h2><p>平均深度：</p>
 
       
     </div>
@@ -361,8 +326,8 @@ hexo new &quot;Hello World&quot; --lang tw
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/03/23/hello-world/" rel="next" title="Hello World">
-                <i class="fa fa-chevron-left"></i> Hello World
+              <a href="/2018/03/24/3_Android消息机制-Handler/" rel="next" title="Android消息机制（上层实现）-Handler">
+                <i class="fa fa-chevron-left"></i> Android消息机制（上层实现）-Handler
               </a>
             
           </div>
@@ -371,8 +336,8 @@ hexo new &quot;Hello World&quot; --lang tw
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/03/24/Android消息机制-Handler/" rel="prev" title="Android消息机制（上层实现）-Handler">
-                Android消息机制（上层实现）-Handler <i class="fa fa-chevron-right"></i>
+              <a href="/2018/04/02/1_java泛型/" rel="prev" title="java泛型">
+                java泛型 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -487,7 +452,7 @@ hexo new &quot;Hello World&quot; --lang tw
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#生成、部署文件快捷方式："><span class="nav-number">1.</span> <span class="nav-text">生成、部署文件快捷方式：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#更多hexo命令："><span class="nav-number">2.</span> <span class="nav-text">更多hexo命令：</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#1-简写"><span class="nav-number">2.0.0.1.</span> <span class="nav-text">1. 简写</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#2-服务器"><span class="nav-number">2.0.0.2.</span> <span class="nav-text">2. 服务器</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#3-监视文件变动"><span class="nav-number">2.0.0.3.</span> <span class="nav-text">3. 监视文件变动</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#4-完成后部署"><span class="nav-number">2.0.0.4.</span> <span class="nav-text">4. 完成后部署</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#5-草稿"><span class="nav-number">2.0.0.5.</span> <span class="nav-text">5. 草稿</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#6-模版"><span class="nav-number">2.0.0.6.</span> <span class="nav-text">6. 模版</span></a></li></ol></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#树的定义和属性"><span class="nav-number">1.</span> <span class="nav-text">树的定义和属性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#树的实现"><span class="nav-number">2.</span> <span class="nav-text">树的实现</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#树的遍历"><span class="nav-number">3.</span> <span class="nav-text">树的遍历</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二叉树"><span class="nav-number">4.</span> <span class="nav-text">二叉树</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二叉查找树"><span class="nav-number">5.</span> <span class="nav-text">二叉查找树</span></a></li></ol></div>
             
 
           </div>

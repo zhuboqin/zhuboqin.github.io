@@ -228,7 +228,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://zhuboqin.github.io/2019/04/17/java8新增功能/">
+    <link itemprop="mainEntityOfPage" href="http://zhuboqin.github.io/2019/04/17/1_java8新增功能/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Zhubq">
@@ -247,7 +247,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2019/04/17/java8新增功能/" itemprop="url">java7，8，9新特性</a></h1>
+                <a class="post-title-link" href="/2019/04/17/1_java8新增功能/" itemprop="url">java7，8，9新特性</a></h1>
         
 
         <div class="post-meta">
@@ -299,8 +299,31 @@
       
         
           
-            <h3 id="1-接口可以有静态方法"><a href="#1-接口可以有静态方法" class="headerlink" title="1. 接口可以有静态方法"></a>1. 接口可以有静态方法</h3><p>java8仍要求接口的所有静态成员都必须是公有的。<br>java9中允许接口中有私有的静态方法，但是静态域和静态成员仍然需要是公有的。</p>
-<h3 id="2-新增接口Supplier-lt-gt"><a href="#2-新增接口Supplier-lt-gt" class="headerlink" title="2. 新增接口Supplier&lt;&gt;"></a>2. 新增接口Supplier&lt;&gt;</h3>
+            <h3 id="1-java8-—-lambda表达式-stream"><a href="#1-java8-—-lambda表达式-stream" class="headerlink" title="1. java8 —- lambda表达式+stream"></a>1. java8 —- lambda表达式+stream</h3><p>lambda其实是一个匿名方法，格式就是：将方法参数和方法体分别写在‘-&gt;’的左边和右边，参数列表用‘()’，方法体用‘{}’。</p>
+<h5 id="1-1-lambda表达式的一般语法"><a href="#1-1-lambda表达式的一般语法" class="headerlink" title="1.1 lambda表达式的一般语法"></a>1.1 lambda表达式的一般语法</h5><pre><code>(Type1 param1, Type2 param2, ..., TypeN paramN) -&gt; {
+    statment1;
+    statment2;
+    //.............
+    return statmentM;
+}
+</code></pre><h5 id="1-2-单个参数的lambda表达式"><a href="#1-2-单个参数的lambda表达式" class="headerlink" title="1.2 单个参数的lambda表达式"></a>1.2 单个参数的lambda表达式</h5><pre><code>param1 -&gt; {  //参数列表可省去&apos;()&apos;
+  statment1;
+  statment2;
+  //.............
+  return statmentM;
+}
+</code></pre><h5 id="1-3-单个参数，并且单语句的lambda表达式"><a href="#1-3-单个参数，并且单语句的lambda表达式" class="headerlink" title="1.3 单个参数，并且单语句的lambda表达式"></a>1.3 单个参数，并且单语句的lambda表达式</h5><pre><code>param1 -&gt; statment //当方法体是单语句时，return、大括号、分号都可以省去
+</code></pre><p>例如：  </p>
+<pre><code>int res = param1 -&gt; statment
+//相当于
+int fun(int param1){
+    return statment;
+}
+int res = fun(param1);
+</code></pre><p>参考文章：<br><a href="https://www.cnblogs.com/aoeiuv/p/5911692.html" title="https://www.cnblogs.com/aoeiuv/p/5911692.html" target="_blank" rel="noopener">Java8特性详解 lambda表达式 Stream</a><br><a href="https://baijiahao.baidu.com/s?id=1609360632653054621&amp;wfr=spider&amp;for=pc" target="_blank" rel="noopener">Java 8新特性：lambda表达式</a><br><a href="https://www.cnblogs.com/franson-2016/p/5593080.html" target="_blank" rel="noopener">Java中Lambda表达式的使用</a></p>
+<h3 id="2-接口可以有静态方法"><a href="#2-接口可以有静态方法" class="headerlink" title="2. 接口可以有静态方法"></a>2. 接口可以有静态方法</h3><p>java8仍要求接口的所有静态成员都必须是公有的。<br>java9中允许接口中有私有的静态方法，但是静态域和静态成员仍然需要是公有的。</p>
+<h3 id="3-新增接口Supplier-lt-gt"><a href="#3-新增接口Supplier-lt-gt" class="headerlink" title="3. 新增接口Supplier&lt;&gt;"></a>3. 新增接口Supplier&lt;&gt;</h3><h3 id="4-compartor比较构造器方法"><a href="#4-compartor比较构造器方法" class="headerlink" title="4. compartor比较构造器方法"></a>4. compartor比较构造器方法</h3><p>java8中，Comparator接口配置了一组比较构造器方法（comparator construction methods）</p>
+
           
         
       
@@ -348,7 +371,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://zhuboqin.github.io/2019/04/17/Effective_java_整理/">
+    <link itemprop="mainEntityOfPage" href="http://zhuboqin.github.io/2019/04/17/1_Effective_java_整理/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Zhubq">
@@ -367,7 +390,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2019/04/17/Effective_java_整理/" itemprop="url">Effective java 整理</a></h1>
+                <a class="post-title-link" href="/2019/04/17/1_Effective_java_整理/" itemprop="url">Effective java 整理</a></h1>
         
 
         <div class="post-meta">
@@ -572,7 +595,7 @@ public class RomanNumerals(){
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://zhuboqin.github.io/2019/03/19/RStudio中文乱码解决方案/">
+    <link itemprop="mainEntityOfPage" href="http://zhuboqin.github.io/2019/03/19/4_RStudio中文乱码解决方案/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Zhubq">
@@ -591,7 +614,7 @@ public class RomanNumerals(){
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2019/03/19/RStudio中文乱码解决方案/" itemprop="url">RStudio中，出现中文乱码问题的解决方案</a></h1>
+                <a class="post-title-link" href="/2019/03/19/4_RStudio中文乱码解决方案/" itemprop="url">RStudio中，出现中文乱码问题的解决方案</a></h1>
         
 
         <div class="post-meta">
@@ -709,7 +732,7 @@ public class RomanNumerals(){
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://zhuboqin.github.io/2018/12/28/数据结构与算法/">
+    <link itemprop="mainEntityOfPage" href="http://zhuboqin.github.io/2018/12/28/2_数据结构与算法/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Zhubq">
@@ -728,7 +751,7 @@ public class RomanNumerals(){
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/12/28/数据结构与算法/" itemprop="url">数据结构与算法</a></h1>
+                <a class="post-title-link" href="/2018/12/28/2_数据结构与算法/" itemprop="url">数据结构与算法</a></h1>
         
 
         <div class="post-meta">
@@ -828,7 +851,7 @@ public class RomanNumerals(){
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://zhuboqin.github.io/2018/04/02/比较函数/">
+    <link itemprop="mainEntityOfPage" href="http://zhuboqin.github.io/2018/04/02/1_comparator和comparable/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Zhubq">
@@ -847,7 +870,7 @@ public class RomanNumerals(){
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/04/02/比较函数/" itemprop="url">Comparator与Comparable</a></h1>
+                <a class="post-title-link" href="/2018/04/02/1_comparator和comparable/" itemprop="url">Comparator与Comparable</a></h1>
         
 
         <div class="post-meta">
@@ -899,8 +922,11 @@ public class RomanNumerals(){
       
         
           
-            <h2 id="Comparator对象比较器"><a href="#Comparator对象比较器" class="headerlink" title="Comparator对象比较器"></a>Comparator对象比较器</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">package java.util;</span><br><span class="line">public interface Comparator&lt;AnyType&gt;&#123;</span><br><span class="line">	int compare(AnyType lhs, AnyType rhs)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
+            <h2 id="Comparator对象比较器"><a href="#Comparator对象比较器" class="headerlink" title="Comparator对象比较器"></a>Comparator对象比较器</h2><pre><code>package java.util;
+public interface Comparator&lt;AnyType&gt;{
+    int compare(AnyType lhs, AnyType rhs)
+}
+</code></pre>
           
         
       
@@ -948,7 +974,7 @@ public class RomanNumerals(){
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://zhuboqin.github.io/2018/04/02/java泛型/">
+    <link itemprop="mainEntityOfPage" href="http://zhuboqin.github.io/2018/04/02/1_java泛型/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Zhubq">
@@ -967,7 +993,7 @@ public class RomanNumerals(){
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/04/02/java泛型/" itemprop="url">java泛型</a></h1>
+                <a class="post-title-link" href="/2018/04/02/1_java泛型/" itemprop="url">java泛型</a></h1>
         
 
         <div class="post-meta">
@@ -1067,7 +1093,7 @@ public class RomanNumerals(){
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://zhuboqin.github.io/2018/04/01/树/">
+    <link itemprop="mainEntityOfPage" href="http://zhuboqin.github.io/2018/04/01/2_树/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Zhubq">
@@ -1086,7 +1112,7 @@ public class RomanNumerals(){
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/04/01/树/" itemprop="url">树</a></h1>
+                <a class="post-title-link" href="/2018/04/01/2_树/" itemprop="url">树</a></h1>
         
 
         <div class="post-meta">
@@ -1190,7 +1216,7 @@ public class RomanNumerals(){
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://zhuboqin.github.io/2018/03/24/Android消息机制-Handler/">
+    <link itemprop="mainEntityOfPage" href="http://zhuboqin.github.io/2018/03/24/3_Android消息机制-Handler/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Zhubq">
@@ -1209,7 +1235,7 @@ public class RomanNumerals(){
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/03/24/Android消息机制-Handler/" itemprop="url">Android消息机制（上层实现）-Handler</a></h1>
+                <a class="post-title-link" href="/2018/03/24/3_Android消息机制-Handler/" itemprop="url">Android消息机制（上层实现）-Handler</a></h1>
         
 
         <div class="post-meta">
@@ -1342,7 +1368,7 @@ public class RomanNumerals(){
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://zhuboqin.github.io/2018/03/23/hello-world-mine/">
+    <link itemprop="mainEntityOfPage" href="http://zhuboqin.github.io/2018/03/23/0_hello-world-mine/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Zhubq">
@@ -1361,7 +1387,7 @@ public class RomanNumerals(){
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/03/23/hello-world-mine/" itemprop="url">Hello Blog</a></h1>
+                <a class="post-title-link" href="/2018/03/23/0_hello-world-mine/" itemprop="url">Hello Blog</a></h1>
         
 
         <div class="post-meta">
@@ -1500,7 +1526,7 @@ hexo new &quot;Hello World&quot; --lang tw
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://zhuboqin.github.io/2018/03/23/hello-world/">
+    <link itemprop="mainEntityOfPage" href="http://zhuboqin.github.io/2018/03/23/0_hello-world/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Zhubq">
@@ -1519,7 +1545,7 @@ hexo new &quot;Hello World&quot; --lang tw
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/03/23/hello-world/" itemprop="url">Hello World</a></h1>
+                <a class="post-title-link" href="/2018/03/23/0_hello-world/" itemprop="url">Hello World</a></h1>
         
 
         <div class="post-meta">
