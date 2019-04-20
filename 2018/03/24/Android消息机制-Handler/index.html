@@ -79,16 +79,16 @@
 
 
 
-<meta name="description" content="平时看了无数篇关于Handler，Looper，MessageQueue详解的博客，最终面对面试官的提问，第一反应居然一脸懵逼，不知从哪儿说起，心里还纳闷：不可能啊！！！！！ 可能好记性真的不如烂笔头， 于是愤然建起了个人博客，励志每天多少学一个知识点，一周写两篇博客。首先还是先来回忆下埋在我记忆深处的handler。。。。权当个人笔记使用，以后还会不断的纪录，修改，探索。 Handler使用场景">
+<meta name="description" content="Handler使用场景将一个任务切换到Handler所在的线程去执行:通常用作子线程更新UI、HandlerThread、IntentService 子线程为什么不能更新UI？Android的UI不是线程安全的，如果在多线程中并发访问可能会导致UI控件处于不可预期的状态，如果对UI控件的访问加上锁机制的话，有两个缺点：首先加上锁机制会让UI访问的逻辑变得复杂；其次锁机制会降低UI访问的效率，因为锁">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Android消息机制（上层实现）-Handler">
 <meta property="og:url" content="http://zhuboqin.github.io/2018/03/24/Android消息机制-Handler/index.html">
 <meta property="og:site_name" content="Zhubq的博客">
-<meta property="og:description" content="平时看了无数篇关于Handler，Looper，MessageQueue详解的博客，最终面对面试官的提问，第一反应居然一脸懵逼，不知从哪儿说起，心里还纳闷：不可能啊！！！！！ 可能好记性真的不如烂笔头， 于是愤然建起了个人博客，励志每天多少学一个知识点，一周写两篇博客。首先还是先来回忆下埋在我记忆深处的handler。。。。权当个人笔记使用，以后还会不断的纪录，修改，探索。 Handler使用场景">
-<meta property="og:updated_time" content="2018-03-25T09:02:44.148Z">
+<meta property="og:description" content="Handler使用场景将一个任务切换到Handler所在的线程去执行:通常用作子线程更新UI、HandlerThread、IntentService 子线程为什么不能更新UI？Android的UI不是线程安全的，如果在多线程中并发访问可能会导致UI控件处于不可预期的状态，如果对UI控件的访问加上锁机制的话，有两个缺点：首先加上锁机制会让UI访问的逻辑变得复杂；其次锁机制会降低UI访问的效率，因为锁">
+<meta property="og:updated_time" content="2019-04-20T08:31:59.597Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Android消息机制（上层实现）-Handler">
-<meta name="twitter:description" content="平时看了无数篇关于Handler，Looper，MessageQueue详解的博客，最终面对面试官的提问，第一反应居然一脸懵逼，不知从哪儿说起，心里还纳闷：不可能啊！！！！！ 可能好记性真的不如烂笔头， 于是愤然建起了个人博客，励志每天多少学一个知识点，一周写两篇博客。首先还是先来回忆下埋在我记忆深处的handler。。。。权当个人笔记使用，以后还会不断的纪录，修改，探索。 Handler使用场景">
+<meta name="twitter:description" content="Handler使用场景将一个任务切换到Handler所在的线程去执行:通常用作子线程更新UI、HandlerThread、IntentService 子线程为什么不能更新UI？Android的UI不是线程安全的，如果在多线程中并发访问可能会导致UI控件处于不可预期的状态，如果对UI控件的访问加上锁机制的话，有两个缺点：首先加上锁机制会让UI访问的逻辑变得复杂；其次锁机制会降低UI访问的效率，因为锁">
 
 
 
@@ -298,9 +298,8 @@
       
 
       
-        <p>平时看了无数篇关于Handler，Looper，MessageQueue详解的博客，最终面对面试官的提问，第一反应居然一脸懵逼，不知从哪儿说起，心里还纳闷：不可能啊！！！！！ 可能好记性真的不如烂笔头， 于是愤然建起了个人博客，励志每天多少学一个知识点，一周写两篇博客。首先还是先来回忆下埋在我记忆深处的handler。。。。<br>权当个人笔记使用，以后还会不断的纪录，修改，探索。</p>
-<h2 id="Handler使用场景"><a href="#Handler使用场景" class="headerlink" title="Handler使用场景"></a>Handler使用场景</h2><p>将一个任务切换到Handler所在的线程去执行:<br>通常用作子线程更新UI、<a href="http://baidu.com" target="_blank" rel="noopener">HandlerThread</a>、<a href="http://baidu.com" target="_blank" rel="noopener">IntentService</a></p>
-<h6 id="延伸：-子线程为什么不能更新UI？"><a href="#延伸：-子线程为什么不能更新UI？" class="headerlink" title="延伸： 子线程为什么不能更新UI？"></a>延伸： 子线程为什么不能更新UI？</h6><p>Android的UI不是线程安全的，如果在多线程中并发访问可能会导致UI控件处于不可预期的状态，如果对UI控件的访问加上锁机制的话，有两个缺点：首先加上锁机制会让UI访问的逻辑变得复杂；其次锁机制会降低UI访问的效率，因为锁机制会阻塞某些线程的执行。基于这两个缺点，最简单且高效的方法就是采用单线程模型来处理UI操作，对于开发者来说也不是很麻烦，只是需要通过Handler切换一下UI访问的执行线程即可。</p>
+        <h2 id="Handler使用场景"><a href="#Handler使用场景" class="headerlink" title="Handler使用场景"></a>Handler使用场景</h2><p>将一个任务切换到Handler所在的线程去执行:<br>通常用作子线程更新UI、<a href="http://baidu.com" target="_blank" rel="noopener">HandlerThread</a>、<a href="http://baidu.com" target="_blank" rel="noopener">IntentService</a></p>
+<h6 id="子线程为什么不能更新UI？"><a href="#子线程为什么不能更新UI？" class="headerlink" title="子线程为什么不能更新UI？"></a>子线程为什么不能更新UI？</h6><p>Android的UI不是线程安全的，如果在多线程中并发访问可能会导致UI控件处于不可预期的状态，如果对UI控件的访问加上锁机制的话，有两个缺点：首先加上锁机制会让UI访问的逻辑变得复杂；其次锁机制会降低UI访问的效率，因为锁机制会阻塞某些线程的执行。基于这两个缺点，最简单且高效的方法就是采用单线程模型来处理UI操作，对于开发者来说也不是很麻烦，只是需要通过Handler切换一下UI访问的执行线程即可。</p>
 <h2 id="Handler使用流程"><a href="#Handler使用流程" class="headerlink" title="Handler使用流程"></a>Handler使用流程</h2><p>假设mainThread和workThread两个线程，现在要从workThread切换到mainThread中执行某个操作。</p>
 <ol>
 <li><p>确定任务需要在哪个线程中执行，则在这个线程中初始化Looper（线程和Looper的对应关系由<a href="http://baidu.com" target="_blank" rel="noopener">ThreadLocal</a>维护）。<br>要做的是,在mainThread中创建Looper：</p>
@@ -482,7 +481,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Handler使用场景"><span class="nav-number">1.</span> <span class="nav-text">Handler使用场景</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#延伸：-子线程为什么不能更新UI？"><span class="nav-number">1.0.0.0.1.</span> <span class="nav-text">延伸： 子线程为什么不能更新UI？</span></a></li></ol></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Handler使用流程"><span class="nav-number">2.</span> <span class="nav-text">Handler使用流程</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#handler-post-什么作用？？？"><span class="nav-number">2.0.0.0.1.</span> <span class="nav-text">handler.post()什么作用？？？</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#补充："><span class="nav-number">2.0.0.0.2.</span> <span class="nav-text">补充：</span></a></li></ol></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#tu"><span class="nav-number">3.</span> <span class="nav-text">tu</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Handler工作流程及原理"><span class="nav-number">4.</span> <span class="nav-text">Handler工作流程及原理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Handler知识点"><span class="nav-number">5.</span> <span class="nav-text">Handler知识点</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Handler使用场景"><span class="nav-number">1.</span> <span class="nav-text">Handler使用场景</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#子线程为什么不能更新UI？"><span class="nav-number">1.0.0.0.1.</span> <span class="nav-text">子线程为什么不能更新UI？</span></a></li></ol></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Handler使用流程"><span class="nav-number">2.</span> <span class="nav-text">Handler使用流程</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#handler-post-什么作用？？？"><span class="nav-number">2.0.0.0.1.</span> <span class="nav-text">handler.post()什么作用？？？</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#补充："><span class="nav-number">2.0.0.0.2.</span> <span class="nav-text">补充：</span></a></li></ol></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#tu"><span class="nav-number">3.</span> <span class="nav-text">tu</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Handler工作流程及原理"><span class="nav-number">4.</span> <span class="nav-text">Handler工作流程及原理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Handler知识点"><span class="nav-number">5.</span> <span class="nav-text">Handler知识点</span></a></li></ol></div>
             
 
           </div>
