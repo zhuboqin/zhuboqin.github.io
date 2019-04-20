@@ -85,7 +85,7 @@
 <meta property="og:url" content="http://zhuboqin.github.io/2019/04/17/Effective_java_整理/index.html">
 <meta property="og:site_name" content="Zhubq的博客">
 <meta property="og:description" content="1.用静态工厂方法代替构造器public static Boolean valueOf(){     return b? Boolean.TRUE: Boolean.FALSE; } 2.遇到多个构造器参数时，要考虑使用构建器public class NutritionFacts{     private final int servingSize;     private final int s">
-<meta property="og:updated_time" content="2019-04-20T08:25:53.028Z">
+<meta property="og:updated_time" content="2019-04-20T13:11:20.326Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Effective java 整理">
 <meta name="twitter:description" content="1.用静态工厂方法代替构造器public static Boolean valueOf(){     return b? Boolean.TRUE: Boolean.FALSE; } 2.遇到多个构造器参数时，要考虑使用构建器public class NutritionFacts{     private final int servingSize;     private final int s">
@@ -184,7 +184,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
-            Startseite
+            Home
           </a>
         </li>
       
@@ -194,7 +194,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
-            Archiv
+            Archives
           </a>
         </li>
       
@@ -258,7 +258,7 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">Posted on</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-04-17T16:29:11+08:00">
                 2019-04-17
@@ -402,7 +402,8 @@ public class RomanNumerals(){
 
 //java内部重用对象的案例: 
 //Map接口的keyset方法返回的set对象，实际上对于一个给定的map对象，keyset都返回同样的set实例。
-</code></pre><h3 id="7-消除过期的对象引用"><a href="#7-消除过期的对象引用" class="headerlink" title="7.消除过期的对象引用"></a>7.消除过期的对象引用</h3>
+</code></pre><h3 id="7-消除过期的对象引用"><a href="#7-消除过期的对象引用" class="headerlink" title="7.消除过期的对象引用"></a>7.消除过期的对象引用</h3><h3 id="13-谨慎地覆盖clone"><a href="#13-谨慎地覆盖clone" class="headerlink" title="13. 谨慎地覆盖clone"></a>13. 谨慎地覆盖clone</h3><pre><code>https://github.com/zhuboqin/zhuboqin.github.io/blob/master/images/%E4%B8%9C%E8%BD%AF%E6%88%90%E7%BB%A9%E5%8D%95.jpg
+</code></pre>
       
     </div>
     
@@ -492,10 +493,10 @@ public class RomanNumerals(){
       
         <ul class="sidebar-nav motion-element">
           <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            Inhaltsverzeichnis
+            Table of Contents
           </li>
           <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            Übersicht
+            Overview
           </li>
         </ul>
       
@@ -516,7 +517,7 @@ public class RomanNumerals(){
                 <a href="/archives/">
               
                   <span class="site-state-item-count">10</span>
-                  <span class="site-state-item-name">Artikel</span>
+                  <span class="site-state-item-name">posts</span>
                 </a>
               </div>
             
@@ -552,7 +553,7 @@ public class RomanNumerals(){
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-用静态工厂方法代替构造器"><span class="nav-number">1.</span> <span class="nav-text">1.用静态工厂方法代替构造器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-遇到多个构造器参数时，要考虑使用构建器"><span class="nav-number">2.</span> <span class="nav-text">2.遇到多个构造器参数时，要考虑使用构建器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-用私有构造器或者枚举类强化singleton属性"><span class="nav-number">3.</span> <span class="nav-text">3. 用私有构造器或者枚举类强化singleton属性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-通过私有构造器-强化不可实例化的能力"><span class="nav-number">4.</span> <span class="nav-text">4. 通过私有构造器 强化不可实例化的能力</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-优先考虑依赖注入来引用资源"><span class="nav-number">5.</span> <span class="nav-text">5. 优先考虑依赖注入来引用资源</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-避免创建不必要的对象（重用不可变的对象，或者已知不会被修改的可变对象）"><span class="nav-number">6.</span> <span class="nav-text">6. 避免创建不必要的对象（重用不可变的对象，或者已知不会被修改的可变对象）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-消除过期的对象引用"><span class="nav-number">7.</span> <span class="nav-text">7.消除过期的对象引用</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-用静态工厂方法代替构造器"><span class="nav-number">1.</span> <span class="nav-text">1.用静态工厂方法代替构造器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-遇到多个构造器参数时，要考虑使用构建器"><span class="nav-number">2.</span> <span class="nav-text">2.遇到多个构造器参数时，要考虑使用构建器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-用私有构造器或者枚举类强化singleton属性"><span class="nav-number">3.</span> <span class="nav-text">3. 用私有构造器或者枚举类强化singleton属性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-通过私有构造器-强化不可实例化的能力"><span class="nav-number">4.</span> <span class="nav-text">4. 通过私有构造器 强化不可实例化的能力</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-优先考虑依赖注入来引用资源"><span class="nav-number">5.</span> <span class="nav-text">5. 优先考虑依赖注入来引用资源</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-避免创建不必要的对象（重用不可变的对象，或者已知不会被修改的可变对象）"><span class="nav-number">6.</span> <span class="nav-text">6. 避免创建不必要的对象（重用不可变的对象，或者已知不会被修改的可变对象）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-消除过期的对象引用"><span class="nav-number">7.</span> <span class="nav-text">7.消除过期的对象引用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#13-谨慎地覆盖clone"><span class="nav-number">8.</span> <span class="nav-text">13. 谨慎地覆盖clone</span></a></li></ol></div>
             
 
           </div>
@@ -582,7 +583,7 @@ public class RomanNumerals(){
 </div>
 
 
-  <div class="powered-by">Erstellt mit  <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
 
 
 
