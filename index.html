@@ -181,7 +181,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
-            Startseite
+            Home
           </a>
         </li>
       
@@ -191,7 +191,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
-            Archiv
+            Archives
           </a>
         </li>
       
@@ -257,7 +257,7 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">Posted on</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-04-17T19:50:21+08:00">
                 2019-04-17
@@ -299,7 +299,10 @@
       
         
           
-            <h3 id="1-java8-—-lambda表达式-stream"><a href="#1-java8-—-lambda表达式-stream" class="headerlink" title="1. java8 —- lambda表达式+stream"></a>1. java8 —- lambda表达式+stream</h3><p>lambda其实是一个匿名方法，格式就是：将方法参数和方法体分别写在‘-&gt;’的左边和右边，参数列表用‘()’，方法体用‘{}’。</p>
+            <h3 id="1-java8-—-lambda表达式、stream、方法引用、构造器引用"><a href="#1-java8-—-lambda表达式、stream、方法引用、构造器引用" class="headerlink" title="1. java8 — lambda表达式、stream、方法引用、构造器引用"></a>1. java8 — lambda表达式、stream、方法引用、构造器引用</h3><p>lambda其实是一个匿名方法，格式就是：将方法参数和方法体分别写在‘-&gt;’的左边和右边，参数列表用‘()’，方法体用‘{}’。</p>
+<blockquote>
+<p>此匿名方法是基于函数式接口的，即接口中仅有一个抽象方法，那么这个抽象方法就可以用lambda表达式表示。</p>
+</blockquote>
 <h5 id="1-1-lambda表达式的一般语法"><a href="#1-1-lambda表达式的一般语法" class="headerlink" title="1.1 lambda表达式的一般语法"></a>1.1 lambda表达式的一般语法</h5><pre><code>(Type1 param1, Type2 param2, ..., TypeN paramN) -&gt; {
     statment1;
     statment2;
@@ -320,10 +323,22 @@ int fun(int param1){
     return statment;
 }
 int res = fun(param1);
-</code></pre><p>参考文章：<br><a href="https://www.cnblogs.com/aoeiuv/p/5911692.html" title="https://www.cnblogs.com/aoeiuv/p/5911692.html" target="_blank" rel="noopener">Java8特性详解 lambda表达式 Stream</a><br><a href="https://baijiahao.baidu.com/s?id=1609360632653054621&amp;wfr=spider&amp;for=pc" target="_blank" rel="noopener">Java 8新特性：lambda表达式</a><br><a href="https://www.cnblogs.com/franson-2016/p/5593080.html" target="_blank" rel="noopener">Java中Lambda表达式的使用</a></p>
-<h3 id="2-接口可以有静态方法"><a href="#2-接口可以有静态方法" class="headerlink" title="2. 接口可以有静态方法"></a>2. 接口可以有静态方法</h3><p>java8仍要求接口的所有静态成员都必须是公有的。<br>java9中允许接口中有私有的静态方法，但是静态域和静态成员仍然需要是公有的。</p>
-<h3 id="3-新增接口Supplier-lt-gt"><a href="#3-新增接口Supplier-lt-gt" class="headerlink" title="3. 新增接口Supplier&lt;&gt;"></a>3. 新增接口Supplier&lt;&gt;</h3><h3 id="4-compartor比较构造器方法"><a href="#4-compartor比较构造器方法" class="headerlink" title="4. compartor比较构造器方法"></a>4. compartor比较构造器方法</h3><p>java8中，Comparator接口配置了一组比较构造器方法（comparator construction methods）</p>
+</code></pre><h5 id="1-4-方法引用语法"><a href="#1-4-方法引用语法" class="headerlink" title="1.4 方法引用语法"></a>1.4 方法引用语法</h5><pre><code>(args)-&gt;objectName.instanceMethod(args)//转换成：
+objectName::instanceMethod
 
+(args)-&gt;ClassName.staticMethod(args) //转换成：
+ClassName::staticMethod
+
+(args)-&gt;args.instanceMethod()//转换成：
+ClassName::instanceMethod
+</code></pre><p>前两种方式，把lambda表达式的参数当成method的参数。<br>后一种方式，把lambda表达式的参数当成调用method的对象实例。</p>
+<h4 id="1-5-构造器引用"><a href="#1-5-构造器引用" class="headerlink" title="1.5 构造器引用"></a>1.5 构造器引用</h4><pre><code>ClassName::new
+</code></pre><p>把lambda表达式的参数当成ClassName构造器的参数</p>
+<h6 id="参考文章："><a href="#参考文章：" class="headerlink" title="参考文章："></a>参考文章：</h6><p><a href="https://www.cnblogs.com/aoeiuv/p/5911692.html" title="https://www.cnblogs.com/aoeiuv/p/5911692.html" target="_blank" rel="noopener">Java8特性详解 lambda表达式 Stream</a><br><a href="https://baijiahao.baidu.com/s?id=1609360632653054621&amp;wfr=spider&amp;for=pc" target="_blank" rel="noopener">Java 8新特性：lambda表达式</a><br><a href="https://www.cnblogs.com/franson-2016/p/5593080.html" target="_blank" rel="noopener">Java中Lambda表达式的使用</a><br><a href="https://www.cnblogs.com/onetwo/p/8526374.html" target="_blank" rel="noopener">java8新特性</a></p>
+<h3 id="2-Java8-—-接口可以有静态方法"><a href="#2-Java8-—-接口可以有静态方法" class="headerlink" title="2. Java8 — 接口可以有静态方法"></a>2. Java8 — 接口可以有静态方法</h3><p>java8仍要求接口的所有静态成员都必须是公有的。<br>java9中允许接口中有私有的静态方法，但是静态域和静态成员仍然需要是公有的。</p>
+<h3 id="3-Java8-—-接口有默认实现方法"><a href="#3-Java8-—-接口有默认实现方法" class="headerlink" title="3. Java8 — 接口有默认实现方法"></a>3. Java8 — 接口有默认实现方法</h3><p>默认方法：Default method，就是接口中的一个带有实现的方法</p>
+<h3 id="4-新增接口Supplier-lt-gt"><a href="#4-新增接口Supplier-lt-gt" class="headerlink" title="4. 新增接口Supplier&lt;&gt;"></a>4. 新增接口Supplier&lt;&gt;</h3><h3 id="5-compartor比较构造器方法"><a href="#5-compartor比较构造器方法" class="headerlink" title="5. compartor比较构造器方法"></a>5. compartor比较构造器方法</h3><p>java8中，Comparator接口配置了一组比较构造器方法（comparator construction methods）</p>
+<h3 id="6-java9—-List-of代替Arrays-asList创建一个列表"><a href="#6-java9—-List-of代替Arrays-asList创建一个列表" class="headerlink" title="6. java9— List.of代替Arrays.asList创建一个列表"></a>6. java9— List.of代替Arrays.asList创建一个列表</h3>
           
         
       
@@ -400,7 +415,7 @@ int res = fun(param1);
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">Posted on</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-04-17T16:29:11+08:00">
                 2019-04-17
@@ -513,6 +528,17 @@ public class Singleton{
 public enum Singleton{
     INSTANCE;
 }
+
+//方法四：延迟初始化例子
+public class Singleton{
+    private Singleton(){}
+    private static class LazyHolder{
+        static final Singleton INSTANCE = new Singleton();
+    }
+    public static Singleton getInstance(){
+        return LazyHolder.INSTANCE;
+    }
+} // 只有当调用Singleton.getInstance()时，程序才会初始化
 </code></pre><h3 id="4-通过私有构造器-强化不可实例化的能力"><a href="#4-通过私有构造器-强化不可实例化的能力" class="headerlink" title="4. 通过私有构造器 强化不可实例化的能力"></a>4. 通过私有构造器 强化不可实例化的能力</h3><pre><code>//一些只包含静态方法和静态域的工具类，往往不需要被实例化，
 //但对客户端而言，可能无意识地通过编译器自动提供的无参构造器去实例化这样的类。
 //为了防止这一现象，可以提供一个私有的构造器
@@ -624,7 +650,7 @@ public class RomanNumerals(){
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">Posted on</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-03-19T00:35:17+08:00">
                 2019-03-19
@@ -761,7 +787,7 @@ public class RomanNumerals(){
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">Posted on</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-12-28T21:00:17+08:00">
                 2018-12-28
@@ -880,7 +906,7 @@ public class RomanNumerals(){
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">Posted on</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-04-02T22:13:57+08:00">
                 2018-04-02
@@ -1003,7 +1029,7 @@ public interface Comparator&lt;AnyType&gt;{
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">Posted on</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-04-02T21:57:51+08:00">
                 2018-04-02
@@ -1122,7 +1148,7 @@ public interface Comparator&lt;AnyType&gt;{
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">Posted on</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-04-01T19:33:57+08:00">
                 2018-04-01
@@ -1245,7 +1271,7 @@ public interface Comparator&lt;AnyType&gt;{
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">Posted on</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-03-24T15:15:47+08:00">
                 2018-03-24
@@ -1397,7 +1423,7 @@ public interface Comparator&lt;AnyType&gt;{
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">Posted on</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-03-23T22:28:37+08:00">
                 2018-03-23
@@ -1555,7 +1581,7 @@ hexo new &quot;Hello World&quot; --lang tw
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">Posted on</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-03-23T22:09:15+08:00">
                 2018-03-23
@@ -1688,7 +1714,7 @@ hexo new &quot;Hello World&quot; --lang tw
                 <a href="/archives/">
               
                   <span class="site-state-item-count">10</span>
-                  <span class="site-state-item-name">Artikel</span>
+                  <span class="site-state-item-name">posts</span>
                 </a>
               </div>
             
@@ -1738,7 +1764,7 @@ hexo new &quot;Hello World&quot; --lang tw
 </div>
 
 
-  <div class="powered-by">Erstellt mit  <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
 
 
 

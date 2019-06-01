@@ -79,16 +79,16 @@
 
 
 
-<meta name="description" content="1. java8 —- lambda表达式+streamlambda其实是一个匿名方法，格式就是：将方法参数和方法体分别写在‘-&amp;gt;’的左边和右边，参数列表用‘()’，方法体用‘{}’。 1.1 lambda表达式的一般语法(Type1 param1, Type2 param2, ..., TypeN paramN) -&amp;gt; {     statment1;     statment2;">
+<meta name="description" content="1. java8 — lambda表达式、stream、方法引用、构造器引用lambda其实是一个匿名方法，格式就是：将方法参数和方法体分别写在‘-&amp;gt;’的左边和右边，参数列表用‘()’，方法体用‘{}’。  此匿名方法是基于函数式接口的，即接口中仅有一个抽象方法，那么这个抽象方法就可以用lambda表达式表示。  1.1 lambda表达式的一般语法(Type1 param1, Type2">
 <meta property="og:type" content="article">
 <meta property="og:title" content="java7，8，9新特性">
 <meta property="og:url" content="http://zhuboqin.github.io/2019/04/17/1_java8新增功能/index.html">
 <meta property="og:site_name" content="Zhubq的博客">
-<meta property="og:description" content="1. java8 —- lambda表达式+streamlambda其实是一个匿名方法，格式就是：将方法参数和方法体分别写在‘-&amp;gt;’的左边和右边，参数列表用‘()’，方法体用‘{}’。 1.1 lambda表达式的一般语法(Type1 param1, Type2 param2, ..., TypeN paramN) -&amp;gt; {     statment1;     statment2;">
-<meta property="og:updated_time" content="2019-04-20T16:00:01.089Z">
+<meta property="og:description" content="1. java8 — lambda表达式、stream、方法引用、构造器引用lambda其实是一个匿名方法，格式就是：将方法参数和方法体分别写在‘-&amp;gt;’的左边和右边，参数列表用‘()’，方法体用‘{}’。  此匿名方法是基于函数式接口的，即接口中仅有一个抽象方法，那么这个抽象方法就可以用lambda表达式表示。  1.1 lambda表达式的一般语法(Type1 param1, Type2">
+<meta property="og:updated_time" content="2019-04-22T01:54:30.906Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="java7，8，9新特性">
-<meta name="twitter:description" content="1. java8 —- lambda表达式+streamlambda其实是一个匿名方法，格式就是：将方法参数和方法体分别写在‘-&amp;gt;’的左边和右边，参数列表用‘()’，方法体用‘{}’。 1.1 lambda表达式的一般语法(Type1 param1, Type2 param2, ..., TypeN paramN) -&amp;gt; {     statment1;     statment2;">
+<meta name="twitter:description" content="1. java8 — lambda表达式、stream、方法引用、构造器引用lambda其实是一个匿名方法，格式就是：将方法参数和方法体分别写在‘-&amp;gt;’的左边和右边，参数列表用‘()’，方法体用‘{}’。  此匿名方法是基于函数式接口的，即接口中仅有一个抽象方法，那么这个抽象方法就可以用lambda表达式表示。  1.1 lambda表达式的一般语法(Type1 param1, Type2">
 
 
 
@@ -184,7 +184,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
-            Startseite
+            Home
           </a>
         </li>
       
@@ -194,7 +194,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
-            Archiv
+            Archives
           </a>
         </li>
       
@@ -258,7 +258,7 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">Posted on</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-04-17T19:50:21+08:00">
                 2019-04-17
@@ -298,7 +298,10 @@
       
 
       
-        <h3 id="1-java8-—-lambda表达式-stream"><a href="#1-java8-—-lambda表达式-stream" class="headerlink" title="1. java8 —- lambda表达式+stream"></a>1. java8 —- lambda表达式+stream</h3><p>lambda其实是一个匿名方法，格式就是：将方法参数和方法体分别写在‘-&gt;’的左边和右边，参数列表用‘()’，方法体用‘{}’。</p>
+        <h3 id="1-java8-—-lambda表达式、stream、方法引用、构造器引用"><a href="#1-java8-—-lambda表达式、stream、方法引用、构造器引用" class="headerlink" title="1. java8 — lambda表达式、stream、方法引用、构造器引用"></a>1. java8 — lambda表达式、stream、方法引用、构造器引用</h3><p>lambda其实是一个匿名方法，格式就是：将方法参数和方法体分别写在‘-&gt;’的左边和右边，参数列表用‘()’，方法体用‘{}’。</p>
+<blockquote>
+<p>此匿名方法是基于函数式接口的，即接口中仅有一个抽象方法，那么这个抽象方法就可以用lambda表达式表示。</p>
+</blockquote>
 <h5 id="1-1-lambda表达式的一般语法"><a href="#1-1-lambda表达式的一般语法" class="headerlink" title="1.1 lambda表达式的一般语法"></a>1.1 lambda表达式的一般语法</h5><pre><code>(Type1 param1, Type2 param2, ..., TypeN paramN) -&gt; {
     statment1;
     statment2;
@@ -319,10 +322,22 @@ int fun(int param1){
     return statment;
 }
 int res = fun(param1);
-</code></pre><p>参考文章：<br><a href="https://www.cnblogs.com/aoeiuv/p/5911692.html" title="https://www.cnblogs.com/aoeiuv/p/5911692.html" target="_blank" rel="noopener">Java8特性详解 lambda表达式 Stream</a><br><a href="https://baijiahao.baidu.com/s?id=1609360632653054621&amp;wfr=spider&amp;for=pc" target="_blank" rel="noopener">Java 8新特性：lambda表达式</a><br><a href="https://www.cnblogs.com/franson-2016/p/5593080.html" target="_blank" rel="noopener">Java中Lambda表达式的使用</a></p>
-<h3 id="2-接口可以有静态方法"><a href="#2-接口可以有静态方法" class="headerlink" title="2. 接口可以有静态方法"></a>2. 接口可以有静态方法</h3><p>java8仍要求接口的所有静态成员都必须是公有的。<br>java9中允许接口中有私有的静态方法，但是静态域和静态成员仍然需要是公有的。</p>
-<h3 id="3-新增接口Supplier-lt-gt"><a href="#3-新增接口Supplier-lt-gt" class="headerlink" title="3. 新增接口Supplier&lt;&gt;"></a>3. 新增接口Supplier&lt;&gt;</h3><h3 id="4-compartor比较构造器方法"><a href="#4-compartor比较构造器方法" class="headerlink" title="4. compartor比较构造器方法"></a>4. compartor比较构造器方法</h3><p>java8中，Comparator接口配置了一组比较构造器方法（comparator construction methods）</p>
+</code></pre><h5 id="1-4-方法引用语法"><a href="#1-4-方法引用语法" class="headerlink" title="1.4 方法引用语法"></a>1.4 方法引用语法</h5><pre><code>(args)-&gt;objectName.instanceMethod(args)//转换成：
+objectName::instanceMethod
 
+(args)-&gt;ClassName.staticMethod(args) //转换成：
+ClassName::staticMethod
+
+(args)-&gt;args.instanceMethod()//转换成：
+ClassName::instanceMethod
+</code></pre><p>前两种方式，把lambda表达式的参数当成method的参数。<br>后一种方式，把lambda表达式的参数当成调用method的对象实例。</p>
+<h4 id="1-5-构造器引用"><a href="#1-5-构造器引用" class="headerlink" title="1.5 构造器引用"></a>1.5 构造器引用</h4><pre><code>ClassName::new
+</code></pre><p>把lambda表达式的参数当成ClassName构造器的参数</p>
+<h6 id="参考文章："><a href="#参考文章：" class="headerlink" title="参考文章："></a>参考文章：</h6><p><a href="https://www.cnblogs.com/aoeiuv/p/5911692.html" title="https://www.cnblogs.com/aoeiuv/p/5911692.html" target="_blank" rel="noopener">Java8特性详解 lambda表达式 Stream</a><br><a href="https://baijiahao.baidu.com/s?id=1609360632653054621&amp;wfr=spider&amp;for=pc" target="_blank" rel="noopener">Java 8新特性：lambda表达式</a><br><a href="https://www.cnblogs.com/franson-2016/p/5593080.html" target="_blank" rel="noopener">Java中Lambda表达式的使用</a><br><a href="https://www.cnblogs.com/onetwo/p/8526374.html" target="_blank" rel="noopener">java8新特性</a></p>
+<h3 id="2-Java8-—-接口可以有静态方法"><a href="#2-Java8-—-接口可以有静态方法" class="headerlink" title="2. Java8 — 接口可以有静态方法"></a>2. Java8 — 接口可以有静态方法</h3><p>java8仍要求接口的所有静态成员都必须是公有的。<br>java9中允许接口中有私有的静态方法，但是静态域和静态成员仍然需要是公有的。</p>
+<h3 id="3-Java8-—-接口有默认实现方法"><a href="#3-Java8-—-接口有默认实现方法" class="headerlink" title="3. Java8 — 接口有默认实现方法"></a>3. Java8 — 接口有默认实现方法</h3><p>默认方法：Default method，就是接口中的一个带有实现的方法</p>
+<h3 id="4-新增接口Supplier-lt-gt"><a href="#4-新增接口Supplier-lt-gt" class="headerlink" title="4. 新增接口Supplier&lt;&gt;"></a>4. 新增接口Supplier&lt;&gt;</h3><h3 id="5-compartor比较构造器方法"><a href="#5-compartor比较构造器方法" class="headerlink" title="5. compartor比较构造器方法"></a>5. compartor比较构造器方法</h3><p>java8中，Comparator接口配置了一组比较构造器方法（comparator construction methods）</p>
+<h3 id="6-java9—-List-of代替Arrays-asList创建一个列表"><a href="#6-java9—-List-of代替Arrays-asList创建一个列表" class="headerlink" title="6. java9— List.of代替Arrays.asList创建一个列表"></a>6. java9— List.of代替Arrays.asList创建一个列表</h3>
       
     </div>
     
@@ -408,10 +423,10 @@ int res = fun(param1);
       
         <ul class="sidebar-nav motion-element">
           <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            Inhaltsverzeichnis
+            Table of Contents
           </li>
           <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            Übersicht
+            Overview
           </li>
         </ul>
       
@@ -432,7 +447,7 @@ int res = fun(param1);
                 <a href="/archives/">
               
                   <span class="site-state-item-count">10</span>
-                  <span class="site-state-item-name">Artikel</span>
+                  <span class="site-state-item-name">posts</span>
                 </a>
               </div>
             
@@ -468,7 +483,7 @@ int res = fun(param1);
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-java8-—-lambda表达式-stream"><span class="nav-number">1.</span> <span class="nav-text">1. java8 —- lambda表达式+stream</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1-1-lambda表达式的一般语法"><span class="nav-number">1.0.1.</span> <span class="nav-text">1.1 lambda表达式的一般语法</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#1-2-单个参数的lambda表达式"><span class="nav-number">1.0.2.</span> <span class="nav-text">1.2 单个参数的lambda表达式</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#1-3-单个参数，并且单语句的lambda表达式"><span class="nav-number">1.0.3.</span> <span class="nav-text">1.3 单个参数，并且单语句的lambda表达式</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-接口可以有静态方法"><span class="nav-number">2.</span> <span class="nav-text">2. 接口可以有静态方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-新增接口Supplier-lt-gt"><span class="nav-number">3.</span> <span class="nav-text">3. 新增接口Supplier&lt;&gt;</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-compartor比较构造器方法"><span class="nav-number">4.</span> <span class="nav-text">4. compartor比较构造器方法</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-java8-—-lambda表达式、stream、方法引用、构造器引用"><span class="nav-number">1.</span> <span class="nav-text">1. java8 — lambda表达式、stream、方法引用、构造器引用</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1-1-lambda表达式的一般语法"><span class="nav-number">1.0.1.</span> <span class="nav-text">1.1 lambda表达式的一般语法</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#1-2-单个参数的lambda表达式"><span class="nav-number">1.0.2.</span> <span class="nav-text">1.2 单个参数的lambda表达式</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#1-3-单个参数，并且单语句的lambda表达式"><span class="nav-number">1.0.3.</span> <span class="nav-text">1.3 单个参数，并且单语句的lambda表达式</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#1-4-方法引用语法"><span class="nav-number">1.0.4.</span> <span class="nav-text">1.4 方法引用语法</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-5-构造器引用"><span class="nav-number">1.1.</span> <span class="nav-text">1.5 构造器引用</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#参考文章："><span class="nav-number">1.1.0.1.</span> <span class="nav-text">参考文章：</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-Java8-—-接口可以有静态方法"><span class="nav-number">2.</span> <span class="nav-text">2. Java8 — 接口可以有静态方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-Java8-—-接口有默认实现方法"><span class="nav-number">3.</span> <span class="nav-text">3. Java8 — 接口有默认实现方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-新增接口Supplier-lt-gt"><span class="nav-number">4.</span> <span class="nav-text">4. 新增接口Supplier&lt;&gt;</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-compartor比较构造器方法"><span class="nav-number">5.</span> <span class="nav-text">5. compartor比较构造器方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-java9—-List-of代替Arrays-asList创建一个列表"><span class="nav-number">6.</span> <span class="nav-text">6. java9— List.of代替Arrays.asList创建一个列表</span></a></li></ol></div>
             
 
           </div>
@@ -498,7 +513,7 @@ int res = fun(param1);
 </div>
 
 
-  <div class="powered-by">Erstellt mit  <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
 
 
 
